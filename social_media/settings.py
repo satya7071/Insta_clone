@@ -58,6 +58,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         "NAME": "railway",
+#         "USER": "root",
+#         "PASSWORD": "hOndokyofuAbcMZcMX81",
+#         "HOST": "containers-us-west-192.railway.app",
+#         "PORT": "7856",
+#     }
+# }
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

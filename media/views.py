@@ -181,9 +181,23 @@ def profile(request,pk):
         button_text = 'UnFollow'
     else:
         button_text = 'Follow'
+    followers_set = Followerscount.objects.filter(user=user)
+    print(followers_set)
+    followers =[]
+    following =[]
+    for i in followers_set:
         
-    user_followers = len(Followerscount.objects.filter(user=pk))
-    user_following = len(Followerscount.objects.filter(follower=pk))
+        j=str(i)
+        print(j)
+        k = j.split('/')[1]
+        followers.append(k)
+        
+    following_set = Followerscount.objects.filter(follower=user)
+    for i in following_set:
+        j = str(i)
+        print(j)
+        k = j.split('/')[0]
+        following.append(k)
     
     context = {
         'user_object':user_object,
@@ -191,10 +205,16 @@ def profile(request,pk):
         'user_posts': user_posts,
         'user_post_length' : user_post_length,
         'button_text' : button_text,
-        'user_followers':user_followers,
-        'user_following':user_following
+        'user_followers': followers_set.count(),
+        'user_following': following_set.count(),
+        'followers': followers,
+        'following': following,
     }
     return render(request, 'profile.html', context)
+
+
+
+
 
 
 @login_required(login_url='signin')

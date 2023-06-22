@@ -17,9 +17,6 @@
 				font-family: cursive;
 				overflow: auto;
 			}
-
-			
-
 			.gradient-text {
 				background: linear-gradient(
 					to right,
@@ -196,9 +193,10 @@
 			}
 
 			.entrytext {
+				margin: 50px;
 				text-align: center;
 				font-size: 60px;
-				margin-bottom: 25px;
+				
 				margin-left: -20%;
 				text-decoration: underline;
 			}
@@ -240,6 +238,19 @@
 				position: relative;
 				left: 80%;
 				font-size: 25px;
+			}
+
+			.df{
+				display:flex;
+				flex-direction:column;
+			}
+
+			.buttons{
+				display: flex;
+				justify-content: space-between;
+				width:100%;
+				margin-top: 10px;
+				
 			}
 
 			@media (max-width: 1280px) {
@@ -285,7 +296,7 @@
 				.entrytext {
 					text-align: center;
 					font-size: 55px;
-					margin-bottom: 25px;
+					{% comment %} margin-bottom: 25px; {% endcomment %}
 					margin-left: -20%;
 					text-decoration: underline;
 				}
@@ -334,7 +345,7 @@
 				.entrytext {
 					text-align: center;
 					font-size: 50px;
-					margin-bottom: 25px;
+					{% comment %} margin-bottom: 25px; {% endcomment %}
 					margin-left: -20%;
 					text-decoration: underline;
 				}
@@ -431,7 +442,7 @@
 				.entrytext {
 					text-align: center;
 					font-size: 40px;
-					margin-bottom: 25px;
+					{% comment %} margin-bottom: 25px; {% endcomment %}
 					margin-left: -20%;
 					text-decoration: underline;
 				}
@@ -497,9 +508,13 @@
 				.entrytext {
 					text-align: center;
 					font-size: 35px;
-					margin-bottom: 25px;
+					{% comment %} margin-bottom: 25px; {% endcomment %}
 					margin-left: -20%;
 					text-decoration: underline;
+				}
+				.content {
+					margin-top: 10%;
+					margin-left:3%;
 				}
 			}
 
@@ -571,8 +586,9 @@
 					text-align: center;
 					font-size: 25px;
 					margin-bottom: 25px;
-					margin-left: -15%;
+					margin-left: 11%;
 					text-decoration: underline;
+					margin-right: 4%;
 				}
 			}
 		</style>
@@ -617,31 +633,16 @@
 									<div class="card">
 										<div class="card-body">
 											<form method="POST" action="upload" enctype="multipart/form-data">
-												  {% csrf_token %}
+											{% csrf_token %}
 												<center>
-													<img
-														class="uploaded_img"
-														src="https://www.lifewire.com/thmb/TRGYpWa4KzxUt1Fkgr3FqjOd6VQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cloud-upload-a30f385a928e44e199a62210d578375a.jpg" />
+													<img id="uploaded_image" class="uploaded_img" src="" />
 												</center>
-												<input
-													type="file"
-													name="image_upload"
-													placeholder="Noo choosen file"
-													class="input-class" />
-												<input
-													type="textcontent"
-													name="caption"
-													placeholder="Enter the caption"
-													class="input-class" />
-												<center>
-													<button type="submit" title="Upload">Upload</button>
-													<button
-														type="button"
-														title="Cancel"
-														onclick="closeUploadForm()">
-														Cancel
-													</button>
-												</center>
+												<input type="file" name="image_upload" placeholder="No chosen file" class="input-class" onchange="previewImage(event)" required/>
+												<input type="textcontent" name="caption" placeholder="Enter the caption" class="input-class" />
+												<div class="buttons">
+													<div><button type="submit" title="Upload">Upload</button></div>
+													<div><button type="button" style="background-color: red;" title="Cancel" onclick="closeUploadForm()">Cancel</button></div>
+												</div>
 											</form>
 										</div>
 									</div>
@@ -657,13 +658,12 @@
 		</nav>
 
 		<div class="content">
-			<div class="wave"></div>
-			<div class="wave"></div>
-			<div class="wave"></div>
+			
 			<div class="entrytext gradient-text">Namaste, {{user}}...!</div>
 
 			{% for post in posts reversed%}
-			<div class="card">
+			<div class="df">
+			<div class="card df">
 				<div class="card-header">
 					<a href="profile/{{post.user}}">@{{post.user}}</a>
 				</div>
@@ -695,9 +695,10 @@
 					</a>
 				</div>
 			</div>
+		</div>
 			{% endfor %}
 
-			<div class="suggestionbox">
+			{% comment %} <div class="suggestionbox">
 				<div class="container-fluid">
 					<div class="header">Suggested Users</div>
 					{% for user in suggestions_username_profile_list %}
@@ -707,7 +708,7 @@
 					</div>
 					{% endfor %}
 				</div>
-			</div>
+			</div> {% endcomment %}
 		</div>
 
 		<script>
@@ -720,6 +721,16 @@
 				document.querySelector(".content").style.display = "flex";
 				document.getElementById("upload_content").style.display = "none";
 			}
-		</script>
+			
+function previewImage(event) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    var imgElement = document.getElementById("uploaded_image");
+    imgElement.src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+		
 	</body>
 </html>
