@@ -88,7 +88,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_images/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_HEADERS = ['*']
+CORS_ALLOW_HEADERS = ['https://coup.up.railway.app']
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_WHITELIST = ['*']
-CORS_TRUSTED_ORIGINS = ['*']
+CORS_ORIGIN_WHITELIST = ['https://coup.up.railway.app']
+CORS_TRUSTED_ORIGINS = ['https://coup.up.railway.app']
