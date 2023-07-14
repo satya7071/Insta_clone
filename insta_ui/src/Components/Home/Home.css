@@ -1,0 +1,55 @@
+.postcard{
+    width: max-content;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.postscontainer{
+    margin: 50px;
+}
+.postimage{
+    max-width: 400px;
+}
+.desc{
+    display: flex;
+    justify-content: space-between;
+}
+.grey-text{
+    color: grey;
+}
+
+.m-1{
+    margin-top: 10px;
+}
+.likebtn{
+    font-size: 25px;
+    padding: 0;
+}
+.main{
+    display: flex;
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-radius: unset;
+    height: calc(100vh - 64px);
+    min-width: calc(100vw - 225px);
+    max-width: 100vw;
+    margin-left: 210px;
+    overflow:auto;
+}
+
+@media (max-width: 992px) {
+    .main{
+        margin-left: 80px;
+    }
+}
+
+@media (max-width: 576px) {
+    .main{
+        display: flex;
+        justify-content: center;
+    }
+    .postscontainer{
+        margin: 5px;
+    }
+   
+}

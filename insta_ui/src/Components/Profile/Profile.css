@@ -1,0 +1,71 @@
+.postscards{
+    width: 25%;
+}
+.innerpost{
+    width: 300px;
+    height: 300px;
+}
+.innercont{
+    width: 100%;
+}
+
+.postscont{
+    margin-top: 50px;
+    width: 95%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.userposts{
+    width: 100%;
+}
+.logo{
+    width: 200px;
+    height: 200px;
+}
+
+.innerpost-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.innerpost {
+  margin-right: 10px; 
+  flex: 0 0 calc(23.33%);
+}
+.pf{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.pfdes{
+    margin-left: 100px;
+}
+.username{
+  font-size: 25px;
+}
+.bio{
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .innerpost {
+    flex: 0 0 calc(50% - 10px); /* Adjust the width of each card for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .innerpost {
+    flex: 0 0 100%; /* Make each card occupy the full width on smaller screens */
+    margin-right: 0; /* Remove the margin between cards */
+  }
+  .pfdes{
+    margin-left: 10px;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+}
+}

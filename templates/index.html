@@ -32,92 +32,154 @@
 				background-clip: text;
 				color: transparent;
 			}
-
-			.navbar-nav {
-				margin-right: 10px;
-			}
-
-			.upload_content {
+			
+			.row {
+				height:100vh;
 				position: absolute;
-				top: 100%;
-				left: 0;
-				display: none;
+				display: flex;
+				flex-direction: column;
+				align-items:center;
+				width: 300px;
+				box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+			}
+			.row2{
+				position:absolute;
+				left: 350px;
+				height:100vh;
+				overflow:auto;
+				width: calc(100vw - 350px);
+			}
+			.side-navigation a{
+				color: black;
 			}
 
-			.navbar-nav li:first-child {
+			.brand{
+				font-size:50px;
+				font-weight:900;
+				margin:30px;
+				margin-bottom:50px;
+				font-family:Optimistic;
+			}
+
+			.brand a:hover{
+				text-decoration:none;
+			}
+
+
+	  		.entrytext {
+				margin: 50px;
+				text-align: center;
+				font-size: 60px;
+				margin-left: -20%;
+				text-decoration: underline;
+			}
+			.card {
+				margin-bottom: 70px;
+				display: block;
+				height: auto;
+				width: 450px;
+				padding: 15px;
+				border: 1px solid #ddd;
+				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+				border-radius: 5%;
+			}
+
+			.card-header a {
+				color: black;
+			}
+
+			.card-body p {
+				width: 400px;
+			}
+
+			.card-body a {
+				color: black;
+			}
+
+			.card-body img {
+				max-height: 500px;
+				width: 400px;
+			}
+			.items li:first-child {
 				position: relative;
 			}
 
-			.navbar-right {
-				float: right !important;
-			}
 
-			.navbar-nav > li {
+			.items > li {
 				display: inline-block;
 				float: none;
 			}
 
-			.navbar-nav > li > a > img {
-				width: 40px;
-				height: 40px;
+
+			.profileimg img {
+				width: 150px;
+				height: 150px;
 				border-radius: 50%;
-				object-fit: contain;
+				object-fit: fill;
+				margin-bottom: 30px;
 			}
 
-			.navbar-header img {
-				width: 40px;
-				height: 40px;
-				border-radius: 50%;
+			.items {
+				display:flex;
+				flex-direction:column;
+				line-height:10px;
+				margin-left:-20px;
+			}
+			.items li{
+				display:flex;
+				flex-direction:column;
+				line-height:30px;
+				align-items:center;
+				font-size:25px;
+			}
+			.items li a{
+				width:250px;
+				padding:10px;
+				text-align:left;
+			}
+			
+			.items li a:hover{
+				text-decoration:none;
+				background-color: #f5f5f5;
+				cursor: pointer;
+				
+			}
+			.glyphicon{
+				margin-right:15px;
+				border: 2px solid black;
+				padding:5px;
+				border-radius:50%;
 			}
 
-			.navbar-header button {
-				border: 0;
+			.inp {
+				display:flex;
+				flex-direction:row;
 			}
 
-			#upload-btn {
-				display: none;
-				margin-top: 10px;
-			}
-
-			.suggestionbox img {
-				height: 40px;
-				width: 40px;
-				border-radius: 50%;
-			}
-
-			.suggestionbox {
-				padding: 30px;
-				display: flex;
-				position: fixed;
-				right: 15%;
-				top: 40%;
-				font-size: 20px;
-				box-shadow: 3px 3px 6px 3px pink;
-			}
-
-			.suggestionbox a {
-				color: black;
-				text-decoration: none;
-			}
-
-			.suggestionbox a:hover {
-				background-color: lightgrey;
-			}
-
-			.suggestionbox .header {
-				font-size: 30px;
-				padding: 10px;
+			.emoji{
+				font-weight:900;
+				font-size:60px;
+				color: orangered;
 			}
 
 			#upload_content {
-				position: absolute;
-				top: 50px;
-				left: -300px;
-				right: 0px;
-				margin: auto;
-				width: 200px;
-				z-index: 1;
-				display: none;
+					position: fixed;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					width: 200px;
+					z-index: 1;
+					display: none;
+			}
+
+			#upload_content .card-body{
+				    padding: 20px;
+					line-height: 30px;
+					display: flex;
+					flex-direction: column;
+					flex-wrap: wrap;
+					justify-content: flex-start;
+					align-items: center;
 			}
 
 			.upload_content .card {
@@ -177,559 +239,174 @@
 			.upload_content button:active {
 				background-color: #0053ba;
 			}
-
-			.navbar-toggle {
-				height: auto;
-			}
-
-			.content {
-				margin-top: 3%;
-				display: flex;
-				flex-wrap: wrap;
-				flex-direction: column;
-				justify-content: center;
-				margin-left: 20%;
-				margin-bottom: 10%;
-			}
-
-			.entrytext {
-				margin: 50px;
-				text-align: center;
-				font-size: 60px;
-				
-				margin-left: -20%;
-				text-decoration: underline;
-			}
-
-			.card {
-				margin-bottom: 70px;
-				display: block;
-				height: auto;
-				width: 450px;
-				padding: 15px;
-				border: 1px solid #ddd;
-				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-				border-radius: 5%;
-			}
-
-			.card-header a {
-				color: black;
-			}
-
-			.card-body p {
-				width: 400px;
-			}
-
-			.card-body a {
-				color: black;
-			}
-
-			.card-body img {
-				max-height: 500px;
-				width: 400px;
-			}
-			.up:hover {
-				cursor: pointer;
-			}
-			#likeicon {
-				font-size: 25px;
-			}
-			#downloadicon {
-				position: relative;
-				left: 80%;
-				font-size: 25px;
-			}
-
-			.df{
-				display:flex;
-				flex-direction:column;
+			
+			.inp button{
+				position:relative;
+				border:none;
+				background:transparent;
+				font-size: 18px;
 			}
 
 			.buttons{
-				display: flex;
-				justify-content: space-between;
-				width:100%;
-				margin-top: 10px;
+				    display: flex;
+					flex-direction: row;
+					margin: 5px;
+					width: 100%;
+					justify-content: space-around;
+			}
+			
+			
+			
+
+			@media (min-width: 768px)
+				.items {
+					float: left;
+					
+				}
+				
+			
+			
+
+			@media (max-width: 580px) {
 				
 			}
 
-			@media (max-width: 1280px) {
-				.content {
-					margin-top: 7%;
-					display: flex;
-					flex-wrap: wrap;
-					flex-direction: column;
-					justify-content: center;
-					margin-left: 15%;
-					margin-bottom: 10%;
-				}
-				#upload_content {
-					position: absolute;
-					top: 40px;
-					left: -300px;
-					right: 0px;
-					margin: auto;
-					width: 200px;
-					z-index: 1;
-					display: none;
-				}
 
-				.suggestionbox img {
-					height: 30px;
-					width: 30px;
-				}
+    {% comment %} @media (max-width: 767px) {
+      
 
-				.suggestionbox {
-					padding: 10px;
-					display: flex;
-					position: fixed;
-					right: 5%;
-					top: 30%;
-					font-size: 20px;
-					box-shadow: 2px 2px 4px 2px pink;
-				}
-
-				.suggestionbox .header {
-					font-size: 25px;
-					padding: 10px;
-				}
-				.entrytext {
-					text-align: center;
-					font-size: 55px;
-					{% comment %} margin-bottom: 25px; {% endcomment %}
-					margin-left: -20%;
-					text-decoration: underline;
-				}
-			}
-
-			@media (max-width: 900px) {
-				.content {
-					margin-top: 7%;
-					display: flex;
-					flex-wrap: wrap;
-					flex-direction: column;
-					justify-content: center;
-					margin-left: 5%;
-					margin-bottom: 10%;
-				}
-				#upload_content {
-					position: absolute;
-					top: 40px;
-					left: -300px;
-					right: 0px;
-					margin: auto;
-					width: 200px;
-					z-index: 1;
-					display: none;
-				}
-
-				.suggestionbox img {
-					height: 30px;
-					width: 30px;
-				}
-
-				.suggestionbox {
-					padding: 10px;
-					display: flex;
-					position: fixed;
-					right: 5%;
-					top: 30%;
-					font-size: 20px;
-					box-shadow: 2px 2px 4px 2px pink;
-				}
-
-				.suggestionbox .header {
-					font-size: 25px;
-					padding: 10px;
-				}
-				.entrytext {
-					text-align: center;
-					font-size: 50px;
-					{% comment %} margin-bottom: 25px; {% endcomment %}
-					margin-left: -20%;
-					text-decoration: underline;
-				}
-			}
-
-			@media (max-width: 768px) {
-				#upload-btn {
-					display: block;
-				}
-
-				.navbar-collapse {
-					text-align: center;
-				}
-
-				.navbar-nav {
-					display: inline-block;
-					float: none;
-				}
-
-				.navbar-nav > li {
-					display: block;
-				}
-
-				.upload_content {
-					height: max-content;
-					top: 75px;
-				}
-
-				.navbar-nav {
-					width: 100%;
-					background-color: #f8f9fa;
-					text-align: center;
-					margin: 0;
-					padding: 0;
-					position: absolute;
-					top: 50px;
-					left: 0;
-				}
-
-				.navbar-nav > li {
-					display: block;
-					margin: 0;
-					border-bottom: 1px solid #ddd;
-				}
-
-				.navbar-nav > li:last-child {
-					border-bottom: none;
-				}
-
-				.navbar-nav > li > a {
-					display: block;
-					padding: 10px 15px;
-				}
-
-				.content {
-					margin-top: 7%;
-					display: flex;
-					flex-wrap: wrap;
-					flex-direction: column;
-					justify-content: center;
-					margin-left: 5%;
-					margin-bottom: 10%;
-				}
-				#upload_content {
-					position: absolute;
-					top: 40px;
-					left: -300px;
-					right: 0px;
-					margin: auto;
-					width: 200px;
-					z-index: 1;
-					display: none;
-				}
-
-				.suggestionbox img {
-					height: 30px;
-					width: 30px;
-				}
-
-				.suggestionbox {
-					padding: 10px;
-					display: flex;
-					position: fixed;
-					right: 3%;
-					top: 30%;
-					font-size: 15px;
-					box-shadow: 2px 2px 4px 2px pink;
-				}
-
-				.suggestionbox .header {
-					font-size: 15px;
-					padding: 5px;
-				}
-				.entrytext {
-					text-align: center;
-					font-size: 40px;
-					{% comment %} margin-bottom: 25px; {% endcomment %}
-					margin-left: -20%;
-					text-decoration: underline;
-				}
-			}
-
-			@media (max-width: 580px) {
-				#upload_content {
-					position: absolute;
-					top: 40px;
-					left: -200px;
-					right: 0px;
-					margin: auto;
-					width: 200px;
-					z-index: 1;
-					display: none;
-				}
-				.card {
-					margin-bottom: 50px;
-					display: block;
-					height: auto;
-					width: 250px;
-					padding: 10px;
-					border: 1px solid #ddd;
-					box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-				}
-
-				.card-body p {
-					width: 250px;
-				}
-
-				.card-body a {
-					color: black;
-				}
-
-				.card-header a {
-					color: black;
-				}
-
-				.card-body img {
-					max-height: 280px;
-					max-width: 230px;
-				}
-
-				.suggestionbox img {
-					height: 20px;
-					width: 20px;
-				}
-
-				.suggestionbox {
-					padding: 5px;
-					display: flex;
-					position: fixed;
-					right: 2%;
-					top: 40%;
-					font-size: 12px;
-					box-shadow: 3px 3px 6px 3px pink;
-				}
-
-				.suggestionbox .header {
-					font-size: 15px;
-					padding: 5px;
-				}
-				.entrytext {
-					text-align: center;
-					font-size: 35px;
-					{% comment %} margin-bottom: 25px; {% endcomment %}
-					margin-left: -20%;
-					text-decoration: underline;
-				}
-				.content {
-					margin-top: 10%;
-					margin-left:3%;
-				}
-			}
-
-			@media (max-width: 460px) {
-				body {
-					font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-						"Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
-				}
-				.navbar-brand {
-					margin-top: 15px;
-				}
-				#upload_content {
-					position: absolute;
-					top: 40px;
-					left: -100px;
-					right: 0px;
-					margin: auto;
-					width: 200px;
-					z-index: 1;
-					display: none;
-				}
-				.card {
-					margin-bottom: 50px;
-					display: block;
-					height: auto;
-					width: 300px;
-					margin-left: 10%;
-					padding: 20px;
-					border: 1px solid #ddd;
-					box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-				}
-
-				.card-body p {
-					width: 300px;
-				}
-
-				.card-body a {
-					color: black;
-				}
-
-				.card-header a {
-					color: black;
-				}
-
-				.card-body img {
-					max-height: 350px;
-					max-width: 250px;
-				}
-
-				.suggestionbox img {
-					height: 20px;
-					width: 20px;
-				}
-
-				.suggestionbox {
-					padding: 10px;
-					display: contents;
-					font-size: 15px;
-					margin-bottom: 10px;
-					box-shadow: 3px 3px 6px 3px pink;
-				}
-
-				.suggestionbox .header {
-					font-size: 20px;
-					padding: 10px;
-				}
-
-				.entrytext {
-					text-align: center;
-					font-size: 25px;
-					margin-bottom: 25px;
-					margin-left: 11%;
-					text-decoration: underline;
-					margin-right: 4%;
-				}
-			}
+      
+    } {% endcomment %}
 		</style>
 	</head>
 	<body>
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button
-						type="button"
-						title="menu"
-						class="navbar-toggle"
-						data-toggle="collapse"
-						data-target="#mynavbar">
-						<img src="{{user_profile.profileimg.url}}" />
-					</button>
-					<a class="navbar-brand" href="\">Coup</a>
-				</div>
 
-				<div class="collapse navbar-collapse" id="mynavbar">
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<form method="POST" class="navbar-form" action="/search">
+		<div class="container-fluid">
+			
+					<div class="row">
+						<div class="side-navigation">
+							
+							<ul class="items">
+								<div class="brand"><a href="\">Coup..<span class="emoji">&#x263A;</span></a></div>
+								<li class='profileimg'><img src="{{user_profile.profileimg.url}}" /></li>
+							<li class="nav-item">
+								<form method="POST" class="navbar-form" action="/search">
 								{% csrf_token %}
 								<div class="form-group">
-									<input
-										type="text"
-										class="form-control"
-										placeholder="Search"
-										name="username" />
-									<button type="submit" class="btn btn-default">
-										<span class="glyphicon glyphicon-search"></span>
+									<div class="inp">
+									<div>
+									<input type="text" class="form-control" placeholder="Search" name="username" />
+									</div>
+									<div>
+									<button type="submit" claass="btn btn-default">
+									<span class="glyphicon glyphicon-search"></span>
 									</button>
+									<div>
+									</div>
 								</div>
-							</form>
-						</li>
-
-						<li class="upload-li">
-							<a onclick="toggleUploadForm()" class="up">Upload Post</a>
-							<div class="upload_content" id="upload_content">
-								<div class="container-fluid">
+								</form>
+							</li>
+							<li class="nav-item upload-li">
+								<a onclick="toggleUploadForm()" class="up"><span class="glyphicon glyphicon-plus"></span>Upload</a>
+									
+							</li>
+							<li class="nav-item"><a href="/profile/{{request.user}}"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+							<li class="nav-item"><a href="settings"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
+							<li class="nav-item"><a href="logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+							</ul>
+						</div>
+					
+					<div class="row2">
+						<div class="upload_content" id="upload_content" style="display: none;">
+										<div class="container-fluid">
 									<div class="card">
+									<div class="card-body">
+										<form method="POST" action="upload" enctype="multipart/form-data">
+										{% csrf_token %}
+										<center>
+											<img id="uploaded_image" class="uploaded_img" src="" />
+										</center>
+										<input type="file" name="image_upload" placeholder="No chosen file" class="input-class" onchange="previewImage(event)" required/>
+										<input type="textcontent" name="caption" placeholder="Enter the caption" class="input-class" />
+										<div class="buttons">
+											<div><button type="submit" title="Upload">Upload</button></div>
+											<div><button type="button" style="background-color: red;" title="Cancel" onclick="toggleUploadForm()">Cancel</button></div>
+										</div>
+										</form>
+									</div>
+									</div>
+								</div>
+								</div>
+						<div class="main-content">
+							<div class="content">
+								
+								<div class="entrytext gradient-text">Namaste, {{user}}...!</div>
+
+								{% for post in posts reversed%}
+								<div class="df">
+									<div class="card df">
+										<div class="card-header">
+											<a href="profile/{{post.user}}">@{{post.user}}</a>
+										</div>
+										<hr />
 										<div class="card-body">
-											<form method="POST" action="upload" enctype="multipart/form-data">
-											{% csrf_token %}
-												<center>
-													<img id="uploaded_image" class="uploaded_img" src="" />
-												</center>
-												<input type="file" name="image_upload" placeholder="No chosen file" class="input-class" onchange="previewImage(event)" required/>
-												<input type="textcontent" name="caption" placeholder="Enter the caption" class="input-class" />
-												<div class="buttons">
-													<div><button type="submit" title="Upload">Upload</button></div>
-													<div><button type="button" style="background-color: red;" title="Cancel" onclick="closeUploadForm()">Cancel</button></div>
-												</div>
-											</form>
+											<a href="{{post.image.url}}">
+												<img src="{{post.image.url}}" alt="" />
+												<hr
+											/></a>
+											<p>
+												<a href="profile/{{post.user}}"><strong>{{post.user}}: </strong></a
+												>{{post.caption}}
+											</p>
+											{% if post.no_of_likes == 0 %}
+											<p>No Likes</p>
+											{% elif post.no_of_likes == 1 %}
+											<p>Liked by 1 person</p>
+											{% else %}
+											<p>Liked by {{post.no_of_likes}} persons</p>
+											{% endif %}
+											<a href="/like-post?post_id={{post.id}}">
+												<span class="glyphicon glyphicon-thumbs-up" id="likeicon"></span
+											></a>
+
+											<a href="{{post.image.url}}" download>
+												<right
+													><span class="glyphicon glyphicon-save" id="downloadicon"></span
+												></right>
+											</a>
 										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li><a href="/profile/{{request.user}}">Profile</a></li>
-						<li><a href="settings">Settings</a></li>
-						<li><a href="logout">Logout</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-		<div class="content">
-			
-			<div class="entrytext gradient-text">Namaste, {{user}}...!</div>
-
-			{% for post in posts reversed%}
-			<div class="df">
-			<div class="card df">
-				<div class="card-header">
-					<a href="profile/{{post.user}}">@{{post.user}}</a>
-				</div>
-				<hr />
-				<div class="card-body">
-					<a href="{{post.image.url}}">
-						<img src="{{post.image.url}}" alt="" />
-						<hr
-					/></a>
-					<p>
-						<a href="profile/{{post.user}}"><strong>{{post.user}}: </strong></a
-						>{{post.caption}}
-					</p>
-					{% if post.no_of_likes == 0 %}
-					<p>No Likes</p>
-					{% elif post.no_of_likes == 1 %}
-					<p>Liked by 1 person</p>
-					{% else %}
-					<p>Liked by {{post.no_of_likes}} persons</p>
-					{% endif %}
-					<a href="/like-post?post_id={{post.id}}">
-						<span class="glyphicon glyphicon-thumbs-up" id="likeicon"></span
-					></a>
-
-					<a href="{{post.image.url}}" download>
-						<right
-							><span class="glyphicon glyphicon-save" id="downloadicon"></span
-						></right>
-					</a>
-				</div>
-			</div>
-		</div>
-			{% endfor %}
-
-			{% comment %} <div class="suggestionbox">
-				<div class="container-fluid">
-					<div class="header">Suggested Users</div>
-					{% for user in suggestions_username_profile_list %}
-					<div class="body">
-						<img src="{{user.profileimg.url}}" />
-						<a href="/profile/{{user}}">{{user}}</a>
+								{% endfor %}
+							</div> 
+						</div>
 					</div>
-					{% endfor %}
-				</div>
-			</div> {% endcomment %}
+			</div>
 		</div>
 
 		<script>
 			function toggleUploadForm() {
-				document.querySelector(".content").style.display = "none";
-				document.getElementById("upload_content").style.display = "block";
-			}
+				var uploadForm = document.getElementById("upload_content");
+				if (uploadForm.style.display === "none" || uploadForm.style.display === "") {
+					document.querySelector(".main-content").style.display = "none";
+					uploadForm.style.display = "block";
+					
+					uploadForm.style.float = "right";
+				} else {
+					document.querySelector(".main-content").style.display = "block";
+					uploadForm.style.display = "none";
+				}
+	}
 
-			function closeUploadForm() {
-				document.querySelector(".content").style.display = "flex";
-				document.getElementById("upload_content").style.display = "none";
-			}
-			
 function previewImage(event) {
-  var reader = new FileReader();
-  reader.onload = function() {
-    var imgElement = document.getElementById("uploaded_image");
-    imgElement.src = reader.result;
-  };
-  reader.readAsDataURL(event.target.files[0]);
+    var reader = new FileReader();
+    reader.onload = function() {
+        var imgElement = document.getElementById("uploaded_image");
+        imgElement.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
 }
+
 </script>
 		
 	</body>

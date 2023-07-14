@@ -1,0 +1,13 @@
+.Side{
+    position: fixed;
+    left: 0;
+    top:62px;
+    height: calc(100vh - 62px);
+    border-radius: unset;
+    background-color: white;
+}
+
+.menu{
+    height: calc(100vh - 62px);
+    padding-top: 50px;
+}

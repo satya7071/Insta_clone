@@ -8,7 +8,6 @@ User = get_user_model()
 
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    id_user = models.IntegerField()
     bio = models.TextField(blank=True)
     profileimg = models.ImageField(upload_to='profile_images',default='default.jpg')
 
@@ -22,7 +21,8 @@ class Post(models.Model):
     caption = models.TextField(blank=True)
     created_at = models.DateTimeField(default=datetime.now)
     no_of_likes = models.IntegerField(default=0)
-    
+    liked_by = models.ManyToManyField('auth.User', related_name='liked_posts',null=True,blank=True)
+
     def __str__(self):
         return self.user
   

@@ -1,0 +1,21 @@
+.Head{
+    padding: 0;
+	position: relative;
+	z-index:  1;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+}
+
+*{
+	font-family: cursive;
+}
+
+.title{
+    margin-left: 20px ;
+	color: white;
+    font-size:25px;
+	font-weight: 500;
+}
