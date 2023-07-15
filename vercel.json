@@ -4,14 +4,11 @@
     { "src": "build.sh", "use": "@now/static-build" },
     { "src": "manage.py", "use": "@now/python" }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/manage.py"
-    }
-  ],
   "env": {
     "MYSQL_UNIX_PORT": "/tmp/mysql.sock"
   },
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/manage.py" }
+  ]
 }
