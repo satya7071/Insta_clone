@@ -1,88 +1,43 @@
-@keyframes moveUpDown {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.btf{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-
-.img-animated {
-  animation: moveUpDown 2s ease-in-out infinite;
-}
-
-.bg{
-    background: linear-gradient(114.02deg, #96CBE2 -3.87%, rgba(255, 255, 255, 0.09) 51.6%, #FF900E 118.56%);
-}
-
 .innercard{
-    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
-    padding: 50px;
-    margin: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
-
-.grid-2{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.form-cont{
+  width:  400px;
 }
-
-.center{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.mt-40{
-    margin-top: 40px;
-}
-
-.mt-20{
-    margin-top: 20px;
-}
-
-
 .showbt{
     position: relative;
-    right: -310px;
-    top: -60px;
-}
-.design{
-  width: 400px;
-  height: 400px;
+    right: -365px;
+    top: -55px;
 }
 .forgotpass{
+  margin-top: -50px;
+}
+
+.remember{
   display: flex;
   justify-content: right;
-  width:max-content
+
 }
-.centerdflex{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-end;
-}
-.forgotpass{
-  width: 100%;
+.sub-btn{
   display: flex;
-  justify-content: flex-end;
-  align-items: end;
-  text-align: right;
+  justify-content: center;
 }
-.forgotpass Link{
-  text-decoration: none;
-  color: blue;
+.bg{
+  width: 100vw;
+  height:100vh;
+  background-color: #f7edd5;
+}
+
+@media (max-width: 576px) {
+    .form-cont{
+        width:  300px;
+      }
+      .showbt{
+    right: -265px;
+    
+}
 }

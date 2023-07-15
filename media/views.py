@@ -106,7 +106,7 @@ class ForgotPasswordAPIView(APIView):
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-            reset_password_link = f"http://localhost:3000/reset/{uid}/{token}"
+            reset_password_link = f"http://localhost:3001/reset/{uid}/{token}"
 
             email_template = """
             Hi {{ user.username }},

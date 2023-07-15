@@ -28,7 +28,7 @@ const HeaderComponent = () => {
 	
 
 	const handleSearch = () => {
-		navigate(`profile/${searchValue}`);
+		navigate(`/profile/${searchValue}`);
 	};
 
 	const handleInputChange = (e) => {
@@ -51,11 +51,13 @@ const HeaderComponent = () => {
 						<Input
 							value={searchValue}
 							onChange={handleInputChange}
-							className="expanded"
+							className="input-search grey-bg"
 						/>
-						<Button type="primary" onClick={handleSearch}>
-							{" "}
-							Search
+						<Button
+							type="primary"
+							className="input-search"
+							onClick={handleSearch}>
+							<SearchOutlined />
 						</Button>
 						<CloseOutlined
 							style={{ fontSize: "18px", color: "white" }}
@@ -65,7 +67,12 @@ const HeaderComponent = () => {
 					</>
 				) : (
 					<SearchOutlined
-						style={{ fontSize: "18px", color: "white",marginTop:"5px",marginRight:"10px" }}
+						style={{
+							fontSize: "18px",
+							color: "white",
+							marginTop: "5px",
+							marginRight: "10px",
+						}}
 						className="search-icon"
 						onClick={handleExpand}
 					/>

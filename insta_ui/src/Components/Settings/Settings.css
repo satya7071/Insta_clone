@@ -18,3 +18,10 @@
 .grey-bg{
     background-color: lightgray;
 }
+
+@media (max-width: 576px){
+    .profilecont{
+        left: 60%;
+        width: 300px;
+    }
+}

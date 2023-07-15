@@ -80,20 +80,18 @@ const Login = () => {
 				</div>
 			) : (
 				<>
-					<div className="bgg">
-						<Card className="cont bg">
-							<Card className="innercard">
-								<div className="center">
+					<div className="bg">
+						<Card className="innercard">
+							<div className="grid-2">
+								<div className="centerdflex">
 									<center>
 										<h1>LOGIN</h1>
 									</center>
 
 									<Form
 										form={form}
-										className="mt-50"
+										className="form-cont"
 										layout="vertical"
-										
-										
 										initialValues={{
 											remember: true,
 										}}
@@ -110,9 +108,7 @@ const Login = () => {
 											]}>
 											<Input className="inp" />
 										</Form.Item>
-										<div className="forgotpass">
-											<Link to="/forgot">Forgot Password</Link>
-										</div>
+
 										<Form.Item
 											label="Password"
 											name="password"
@@ -127,6 +123,7 @@ const Login = () => {
 												className="inp"
 											/>
 										</Form.Item>
+
 										<Button
 											type="text"
 											className="showbt"
@@ -139,25 +136,23 @@ const Login = () => {
 											}
 											onClick={togglePasswordVisibility}
 										/>
+										<div className="forgotpass">
+											<Link to="/forgot">Forgot Password</Link>
+										</div>
 
-										<Form.Item
-											>
+										<Form.Item className="remember">
 											<Checkbox onChange={handleRememberMe}>
 												Remember Me
 											</Checkbox>
 										</Form.Item>
-										<Form.Item
-											wrapperCol={{
-												offset: 8,
-												span: 16,
-											}}>
+										<Form.Item className="sub-btn">
 											<Button type="primary" htmlType="submit">
 												Submit
 											</Button>
 										</Form.Item>
 									</Form>
 								</div>
-							</Card>
+							</div>
 						</Card>
 					</div>
 				</>

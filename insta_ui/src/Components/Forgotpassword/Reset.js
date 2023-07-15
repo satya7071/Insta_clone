@@ -66,16 +66,11 @@ const ResetPasswordForm = () => {
 			<>
 				
 					<>
-						<div className="bgg">
-							<Card className="cont bg">
+						<div className="bg">
+							
 								<Card className="innercard">
 									<div className="grid-2">
-										{/* <div className="mt-40">
-											<img
-												src={image}
-												alt="logo"
-												className="img-fluid img-animated"></img>
-										</div> */}
+										
 
 										<div className="centerdflex">
 											<center>
@@ -84,14 +79,9 @@ const ResetPasswordForm = () => {
 
 											<Form
 												form={form}
-												className="mt-50"
+												className="form-cont"
 												layout="vertical"
-												wrapperCol={{
-													span: 16,
-												}}
-												style={{
-													maxWidth: 600,
-												}}
+												
 												initialValues={{
 													remember: true,
 												}}
@@ -153,12 +143,9 @@ const ResetPasswordForm = () => {
 												/>
 
 												<div className="error" style={{ marginTop:"-50px" }}>{error && <p>{error}</p>}</div>
-
+												<br></br>
 												<Form.Item
-													wrapperCol={{
-														offset: 8,
-														span: 16,
-													}}>
+													className="sub-btn">
 													<Button type="primary" htmlType="submit" className="lb">
 														Submit
 													</Button>
@@ -167,7 +154,7 @@ const ResetPasswordForm = () => {
 										</div>
 									</div>
 								</Card>
-							</Card>
+							
 						</div>
 					</>
 				

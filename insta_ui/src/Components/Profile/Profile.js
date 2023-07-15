@@ -209,6 +209,7 @@ const Profile = () => {
 	
 
 	if (!profile) {
+		
 		return (
 			<Result
 				status="404"
@@ -220,7 +221,7 @@ const Profile = () => {
 					</Button>
 				}
 			/>
-		);
+		)
 	}
 
 	
@@ -228,7 +229,7 @@ const Profile = () => {
 
 		
 	
-
+	
 	return (
 		<Layout>
 			<Content className="main">

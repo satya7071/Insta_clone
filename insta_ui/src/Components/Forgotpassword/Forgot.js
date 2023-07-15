@@ -21,7 +21,7 @@ function ForgotPassword() {
 	const handleForgotPassword = async (values) => {
 		setLoading(true)
 		
-
+		console.log(JSON.stringify(values))
 		try {
 			const response = await fetch(`${apiurl}/forgotpassword/`, {
 				method: "POST",
@@ -32,6 +32,7 @@ function ForgotPassword() {
 			});
 
 			const data = await response.json();
+			console.log(data)
 			if (response.ok) {
 				setLoading(false);
 				setSuccessMessage(data.success);
@@ -57,16 +58,10 @@ function ForgotPassword() {
 				</div>
 			) : (
 				<>
-					<div className="bgg">
-						<Card className="cont bg">
+					<div className="bg">
+						
 							<Card className="innercard">
-								<div className="grid-2">
-									<div className="mt-40">
-										{/* <img
-											src={image}
-											alt="logo"
-											className="img-fluid img-animated"></img> */}
-									</div>
+								<div className="form-cont">
 
 									<div className="centerdflex">
 										<center>
@@ -77,15 +72,6 @@ function ForgotPassword() {
 												form={form}
 												className="mt-50"
 												layout="vertical"
-												labelCol={{
-													span: 8,
-												}}
-												wrapperCol={{
-													span: 16,
-												}}
-												style={{
-													maxWidth: 600,
-												}}
 												initialValues={{
 													remember: true,
 												}}
@@ -112,10 +98,7 @@ function ForgotPassword() {
 												</div>
 
 												<Form.Item
-													wrapperCol={{
-														offset: 8,
-														span: 16,
-													}}>
+													className="sub-btn">
 													<Button
 														type="primary"
 														htmlType="submit"
@@ -128,7 +111,7 @@ function ForgotPassword() {
 									</div>
 								</div>
 							</Card>
-						</Card>
+						
 					</div>
 				</>
 			)}
