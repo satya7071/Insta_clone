@@ -1,6 +1,7 @@
 {
   "version": 2,
   "builds": [
+    { "src": "build.sh", "use": "@vercel/static-build" },
     { "src": "manage.py", "use": "@vercel/python" }
   ],
   "env": {
@@ -11,17 +12,5 @@
       "src": "/(.*)",
       "dest": "manage.py"
     }
-  ],
-  "install": {
-    "include": [
-      "requirements.txt"
-    ],
-    "ignore": [
-      ".vercel/**"
-    ],
-    "config": {
-      "python": "3.9.x"
-    },
-    "command": "pip install -r requirements.txt && apt-get install -y default-libmysqlclient-dev"
-  }
+  ]
 }
