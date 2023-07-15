@@ -61,16 +61,16 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        "NAME": "railway",
-        "USER": "root",
-        "PASSWORD": "CzCJgDYrWR2hUHE4X50X",
-        "HOST": "containers-us-west-138.railway.app",
-        "PORT": "6618",
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         "NAME": "railway",
+#         "USER": "root",
+#         "PASSWORD": "CzCJgDYrWR2hUHE4X50X",
+#         "HOST": "containers-us-west-138.railway.app",
+#         "PORT": "6618",
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
