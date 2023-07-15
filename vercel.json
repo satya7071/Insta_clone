@@ -1,7 +1,15 @@
 {
   "version": 2,
   "builds": [
-    { "src": "build.sh", "use": "@now/static-build" },
-    { "src": "manage.py", "use": "@now/python" }
-  ]
+    { "src": "build.sh", "use": "@vercel/static-build" },
+    { "src": "manage.py", "use": "@vercel/python" }
+  ],
+  "env": {
+    "MYSQL_UNIX_PORT": "/tmp/mysql.sock"
+  },
+  "functions": {
+    "api/**/*.py": {
+      "runtime": "python3.9"
+    }
+  }
 }
