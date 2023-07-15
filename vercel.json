@@ -6,11 +6,6 @@
   "env": {
     "MYSQL_UNIX_PORT": "/tmp/mysql.sock"
   },
-  "functions": {
-    "api/**/*.py": {
-      "runtime": "@vercel/python"
-    }
-  },
   "routes": [
     {
       "src": "/(.*)",
