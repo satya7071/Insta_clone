@@ -9,7 +9,8 @@ export const UserProvider = ({ children }) => {
 	const [token,setToken] = useState(null);
 	
 
-	const apiurl = "http://localhost:8000";
+	// const apiurl = "http://localhost:8000";
+	const apiurl = "https://satyanarayana.pythonanywhere.com";
 
 	
 
@@ -68,15 +69,7 @@ export const UserProvider = ({ children }) => {
 
 	
 
-	const handleSessionLogout = () => {
-		setUserId("");
-		setUser(null);
-		setToken(null);
-		sessionStorage.removeItem("userId");
-		sessionStorage.removeItem("user");
-		sessionStorage.removeItem("token");
-		
-	};
+	
 
 	const handlesetSessionToken = (token) => {
 		setToken(token);
@@ -101,6 +94,9 @@ export const UserProvider = ({ children }) => {
 		localStorage.removeItem("user");
 		localStorage.removeItem("token");
 		localStorage.removeItem("userId");
+		sessionStorage.removeItem("userId");
+		sessionStorage.removeItem("user");
+		sessionStorage.removeItem("token");
 	};
 
 	const handlesetToken = (token) => {
@@ -120,7 +116,6 @@ export const UserProvider = ({ children }) => {
 				handleLogout,
 				handlesetToken,
 				handleSessionLogin,
-				handleSessionLogout,
 				handlesetSessionToken,
 				token,
 				apiurl,

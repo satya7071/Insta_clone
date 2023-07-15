@@ -4,11 +4,12 @@ import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
 import "./Upload.css";
+import NotLoggedin from "../Notloggedin";
 
 const { TextArea } = Input;
 
 const PostForm = () => {
-	const { user } = useContext(UserContext);
+	const { user,token ,apiurl} = useContext(UserContext);
 	const navigate = useNavigate();
 	const [image, setImage] = useState(null);
 	const [caption, setCaption] = useState("");
@@ -36,7 +37,7 @@ const PostForm = () => {
 		formData.append("image", image);
 		formData.append("caption", caption);
 
-		fetch("http://127.0.0.1:8000/api/post/", {
+		fetch(`${apiurl}/api/post/`, {
 			method: "POST",
 			body: formData,
 		})
@@ -54,6 +55,10 @@ const PostForm = () => {
 		setImage(null);
 		setCaption("");
 	};
+
+	if (!token && !user) {
+		return <NotLoggedin />;
+	}
 
 	return (
 		<Layout>

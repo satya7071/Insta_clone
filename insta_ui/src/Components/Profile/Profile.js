@@ -6,10 +6,13 @@ import { Link } from "react-router-dom";
 import "./Profile.css";
 import { useParams } from "react-router-dom";
 import FollowButton from "./Followbtn";
+import NotLoggedin from "../Notloggedin";
+
+
 const { Content } = Layout;
 
 const Profile = () => {
-	const { user,apiurl } = useContext(UserContext);
+	const { user,apiurl,token } = useContext(UserContext);
 	const { username } = useParams();
 	const [userId, setUserId] = useState(null);
 	const [profile, setProfile] = useState(null);
@@ -62,7 +65,7 @@ const Profile = () => {
 			if (response.ok) {
 				const data = await response.json();
 				const filtereduser = data.find((item) => item.username === username);
-				console.log(filtereduser);
+				// console.log(filtereduser);
 				if (filtereduser) {
 					setUserId(filtereduser.id);
 				} else {
@@ -82,7 +85,7 @@ const Profile = () => {
 			if (response.ok) {
 				const data = await response.json();
 				const filteredProfile = data.find((item) => item.user === userId);
-				console.log(filteredProfile);
+				// console.log(filteredProfile);
 				if (filteredProfile) {
 					setProfile(filteredProfile);
 				} else {
@@ -141,7 +144,7 @@ const Profile = () => {
 	
 	const handleFollow = async () => {
 		try {
-			const response = await fetch("http://127.0.0.1:8000/api/follow/", {
+			const response = await fetch(`${apiurl}/api/follow/`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -167,12 +170,12 @@ const Profile = () => {
 	const handleUnfollow = async () => {
 		try {
 
-			console.log(followingsList)
+			// console.log(followingsList)
 			
 			const relationship = followersList.find(
 				(item) => item.follower === user && item.user === username
 			);
-			console.log(relationship)
+			// console.log(relationship)
 
 			if (!relationship) {
 				console.error("Relationship not found. Unable to unfollow.");
@@ -180,7 +183,7 @@ const Profile = () => {
 			}
 
 			const response = await fetch(
-				`http://127.0.0.1:8000/api/follow/${relationship.id}/`,
+				`${apiurl}/api/follow/${relationship.id}/`,
 				{
 					method: "DELETE",
 				}
@@ -200,6 +203,10 @@ const Profile = () => {
 		}
 	};
 
+	if (!token && !user) {
+		return <NotLoggedin />;
+	}
+	
 
 	if (!profile) {
 		return (
@@ -215,6 +222,8 @@ const Profile = () => {
 			/>
 		);
 	}
+
+	
 
 
 		

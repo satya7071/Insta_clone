@@ -38,6 +38,14 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
 .mt-40{
     margin-top: 40px;
 }

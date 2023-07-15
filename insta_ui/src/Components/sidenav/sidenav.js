@@ -19,8 +19,12 @@ import { UserContext } from "../UserContext";
 const { Sider } = Layout;
 
 const SideNav = () => {
-	const { user } = useContext(UserContext);
+	const { user,token } = useContext(UserContext);
 	const location = useLocation();
+
+	if(!token){
+		return
+	}
 
 	const defaultSelectedKeys = () => {
 		const pathname = location.pathname;
@@ -48,10 +52,10 @@ const SideNav = () => {
 			breakpoint="lg"
 			collapsedWidth="0"
 			onBreakpoint={(broken) => {
-				console.log(broken);
+				// console.log(broken);
 			}}
 			onCollapse={(collapsed, type) => {
-				console.log(collapsed, type);
+				// console.log(collapsed, type);
 			}}>
 			<div className="demo-logo-vertical" />
 			<Menu

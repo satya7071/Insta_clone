@@ -43,7 +43,7 @@ const Login = () => {
 			body: JSON.stringify(value),
 		});
 		const data = await response.json();
-		console.log(data.message)
+		// console.log(data.message)
 		
 		if (response.ok && data !== null) {
 			
@@ -83,103 +83,83 @@ const Login = () => {
 					<div className="bgg">
 						<Card className="cont bg">
 							<Card className="innercard">
-								<div className="grid-2">
-									{/* <div className="mt-40">
-										<img
-											src={image}
-											alt="logo"
-											className="img-fluid img-animated"></img>
-									</div> */}
+								<div className="center">
+									<center>
+										<h1>LOGIN</h1>
+									</center>
 
-									<div className="centerdflex">
-										<center>
-											<h1>LOGIN</h1>
-										</center>
+									<Form
+										form={form}
+										className="mt-50"
+										layout="vertical"
 										
-										<Form
-											form={form}
-											className="mt-50"
-											layout="vertical"
-											labelCol={{
-												span: 8,
-											}}
-											wrapperCol={{
-												span: 16,
-											}}
-											style={{
-												maxWidth: 600,
-											}}
-											initialValues={{
-												remember: true,
-											}}
-											onFinish={handleAuthentication}
-											autoComplete="off">
-											<Form.Item
-												label="Username"
-												name="username"
-												rules={[
-													{
-														required: true,
-														message: "Please input your username!",
-													},
-												]}>
-												<Input className="inp" />
-											</Form.Item>
-											<div className="forgotpass">
-												<Link to="/forgot">Forgot Password</Link>
-											</div>
-											<Form.Item
-												label="Password"
-												name="password"
-												rules={[
-													{
-														required: true,
-														message: "Please input your password!",
-													},
-												]}>
-												<Input
-													type={showPassword ? "text" : "password"}
-													className="inp"
-												/>
-											</Form.Item>
-											<Button
-												type="text"
-												className="showbt"
-												icon={
-													showPassword ? (
-														<EyeOutlined />
-													) : (
-														<EyeInvisibleOutlined />
-													)
-												}
-												onClick={togglePasswordVisibility}
+										
+										initialValues={{
+											remember: true,
+										}}
+										onFinish={handleAuthentication}
+										autoComplete="off">
+										<Form.Item
+											label="Username"
+											name="username"
+											rules={[
+												{
+													required: true,
+													message: "Please input your username!",
+												},
+											]}>
+											<Input className="inp" />
+										</Form.Item>
+										<div className="forgotpass">
+											<Link to="/forgot">Forgot Password</Link>
+										</div>
+										<Form.Item
+											label="Password"
+											name="password"
+											rules={[
+												{
+													required: true,
+													message: "Please input your password!",
+												},
+											]}>
+											<Input
+												type={showPassword ? "text" : "password"}
+												className="inp"
 											/>
+										</Form.Item>
+										<Button
+											type="text"
+											className="showbt"
+											icon={
+												showPassword ? (
+													<EyeOutlined />
+												) : (
+													<EyeInvisibleOutlined />
+												)
+											}
+											onClick={togglePasswordVisibility}
+										/>
 
-											<Form.Item
-												wrapperCol={{
-													offset: 8,
-													span: 16,
-												}}>
-												<Checkbox onChange={handleRememberMe}>
-													Remember Me
-												</Checkbox>
-											</Form.Item>
-											<Form.Item
-												wrapperCol={{
-													offset: 8,
-													span: 16,
-												}}>
-												<Button type="primary" htmlType="submit">
-													Submit
-												</Button>
-											</Form.Item>
-										</Form>
-									</div>
+										<Form.Item
+											>
+											<Checkbox onChange={handleRememberMe}>
+												Remember Me
+											</Checkbox>
+										</Form.Item>
+										<Form.Item
+											wrapperCol={{
+												offset: 8,
+												span: 16,
+											}}>
+											<Button type="primary" htmlType="submit">
+												Submit
+											</Button>
+										</Form.Item>
+									</Form>
 								</div>
 							</Card>
 						</Card>
 					</div>
-					
 				</>
 			)}
 			{contextHolder}

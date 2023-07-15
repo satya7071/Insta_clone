@@ -10,7 +10,7 @@ import SideNav from "./Components/sidenav/sidenav";
 import PostForm from "./Components/Upload/Upload";
 import ProfileForm from "./Components/Settings/Settings";
 import Profile from "./Components/Profile/Profile";
-
+import Registration from "./Components/userauth/signup.js";
 function App() {
 	return (
 		<UserProvider>
@@ -19,6 +19,7 @@ function App() {
 					<Route path="/forgot" element={<ForgotPassword />} />
 					<Route path="/reset/:uidb64/:token" element={<ResetPasswordForm />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/signup" element={<Registration />} />
 					<Route
 						path="/home"
 						element={

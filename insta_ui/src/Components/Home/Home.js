@@ -8,10 +8,12 @@ import {
 	HeartFilled,
 	HeartTwoTone,
 } from "@ant-design/icons";
+import NotLoggedin from "../Notloggedin";
+
 const { Content } = Layout;
 
 const Home = () => {
-	const { user, apiurl ,userId } = useContext(UserContext);
+	const { user, apiurl ,userId,token } = useContext(UserContext);
 	const [posts, setPosts] = useState(null);
 
 	useEffect(() => {
@@ -46,9 +48,9 @@ const Home = () => {
 
 	const calculateRelativeTime = (createdAt) => {
 		const now = new Date();
-		console.log(now)
+		// console.log(now)
 		const created = new Date(createdAt);
-		console.log(created)
+		// console.log(created)
 		const diff = now - created;
 
 		const seconds = Math.floor(diff / 1000);
@@ -74,7 +76,7 @@ const Home = () => {
 	};
 
 	async function likePost(id) {
-		console.log(id);
+		// console.log(id);
 		const values = {
 			id: id,
 			user: user,
@@ -92,7 +94,7 @@ const Home = () => {
 	}
 
 	async function unlikePost(id) {
-		console.log(id);
+		// console.log(id);
 		const values = {
 			id: id,
 			user: user,
@@ -109,7 +111,13 @@ const Home = () => {
 		}
 	}
 
-	console.log(userId)
+	// console.log(userId)
+
+	if(!token && !user){
+		return(
+			<NotLoggedin />
+		)
+	}
 
 	return (
 		<Layout>

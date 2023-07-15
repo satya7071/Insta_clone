@@ -3,9 +3,10 @@ import { Form, Input, Button, Upload, message, Layout, Image } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { UserContext } from "../UserContext";
 import './Settings.css';
+import NotLoggedin from "../Notloggedin";
 const { Content } = Layout;
 const ProfileForm = () => {
-	const { userId, apiurl } = useContext(UserContext);
+	const { userId, apiurl,token,user } = useContext(UserContext);
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState(false);
 	const [profile, setProfile] = useState(null);
@@ -27,7 +28,7 @@ const ProfileForm = () => {
 				const filteredProfile = data.find(
 					(item) => item.user === parseInt(userId)
 				);
-				console.log(filteredProfile);
+				// console.log(filteredProfile);
 				if (filteredProfile) {
 					setProfile(filteredProfile);
 					if (form) {
@@ -82,6 +83,10 @@ const ProfileForm = () => {
 
 		setLoading(false);
 	};
+
+	if (!token && !user) {
+		return <NotLoggedin />;
+	}
 
 
 	

@@ -1,4 +1,4 @@
-import { Layout,Input,Button } from "antd";
+import { Layout,Input,Button,Result } from "antd";
 import {
 	SearchOutlined,
 	LogoutOutlined,
@@ -8,8 +8,9 @@ import "./Header.css";
 import { UserContext } from "../UserContext";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-const { Header } = Layout;
 
+import { Link } from "react-router-dom";
+const { Header } = Layout;
 const HeaderComponent = () => {
 	const { handleLogout } = useContext(UserContext);
 	const navigate = useNavigate();
@@ -22,9 +23,9 @@ const HeaderComponent = () => {
 		navigate("/login");
 	};
 
-	if(!token){
-		navigate("/login");
-	}
+	console.log(token);
+
+	
 
 	const handleSearch = () => {
 		navigate(`profile/${searchValue}`);
@@ -37,9 +38,13 @@ const HeaderComponent = () => {
 	const handleExpand = () => {
 		setExpanded(!expanded);
 	};
+
+	if (token === null) {
+		return
+	}
 	return (
 		<Header className="Head">
-			<div className="title">COUP</div>
+			<div className="title">InstaDoppelganger</div>
 			<div style={{ display: "flex", alignItems: "center" }}>
 				{expanded ? (
 					<>
