@@ -9,5 +9,6 @@ djangorestframework-jwt==1.11.0
 djangorestframework-simplejwt==5.2.2
 num2words==0.5.12
 django-dotenv==1.4.2
-
+mysql-connector-python==8.0.32
+mysqlclient==2.1.1
 sqlparse==0.4.3
