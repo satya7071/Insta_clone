@@ -8,8 +8,8 @@ apt-get install -y default-libmysqlclient-dev
 python -m venv venv
 source venv/bin/activate
 
+# Upgrade pip and setuptools
+pip install --no-cache-dir --upgrade pip setuptools
+
 # Install Python dependencies
 pip install --no-cache-dir -r requirements.txt
-
-# Install mysqlclient
-pip install mysqlclient
