@@ -3,12 +3,5 @@
   "builds": [
     { "src": "build.sh", "use": "@now/static-build" },
     { "src": "manage.py", "use": "@now/python" }
-  ],
-  "env": {
-    "MYSQL_UNIX_PORT": "/tmp/mysql.sock"
-  },
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/manage.py" }
   ]
 }
