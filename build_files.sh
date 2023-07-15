@@ -5,10 +5,10 @@ apt-get update
 apt-get install -y default-libmysqlclient-dev
 
 # Upgrade pip and setuptools
-pip install --no-cache-dir --upgrade pip setuptools
+python3.9 -m pip install --no-cache-dir --upgrade pip setuptools
 
 # Install Python dependencies
-pip install --no-cache-dir -r requirements.txt
+python3.9 -m pip install -r requirements.txt
 
 # Install mysqlclient
 apt-get install -y libmariadb-dev
@@ -18,3 +18,5 @@ export MYSQL_UNIX_PORT="/tmp/mysql.sock"
 
 # Run database migrations (if applicable)
 python manage.py migrate
+
+python3.9 manage.py collectstatic --noinput --clear
