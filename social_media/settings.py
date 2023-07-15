@@ -61,16 +61,16 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         "NAME": "railway",
-#         "USER": "root",
-#         "PASSWORD": "hOndokyofuAbcMZcMX81",
-#         "HOST": "containers-us-west-192.railway.app",
-#         "PORT": "7856",
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        "NAME": "railway",
+        "USER": "root",
+        "PASSWORD": "CzCJgDYrWR2hUHE4X50X",
+        "HOST": "containers-us-west-138.railway.app",
+        "PORT": "6618",
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -92,8 +92,8 @@ USE_TZ = True
 TIME_ZONE = 'Asia/Kolkata'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 MEDIA_URL = '/media_images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_images/')

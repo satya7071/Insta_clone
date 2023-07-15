@@ -13,7 +13,7 @@ const { Header } = Layout;
 const HeaderComponent = () => {
 	const { handleLogout } = useContext(UserContext);
 	const navigate = useNavigate();
-	const { user , apiurl } = useContext(UserContext);
+	const { user , apiurl ,token } = useContext(UserContext);
 	const [searchValue, setSearchValue] = useState("");
 	const [expanded, setExpanded] = useState(false);
 	
@@ -21,6 +21,10 @@ const HeaderComponent = () => {
 		handleLogout();
 		navigate("/login");
 	};
+
+	if(!token){
+		navigate("/login");
+	}
 
 	const handleSearch = () => {
 		navigate(`profile/${searchValue}`);
