@@ -16,9 +16,9 @@ function Landing() {
 	}, [token,user]);
     
 	return (
-		<div className="main-container">
+		<div className="main-landing">
 			<div className="content">
-				<h1 className="title">
+				<h1 className="landing-title">
 					<span className="welcome">Welcome to</span>
 					<br />
 					<span className="insta">InstaDuppleganger</span>

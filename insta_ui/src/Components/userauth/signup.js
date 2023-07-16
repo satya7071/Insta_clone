@@ -114,7 +114,7 @@ const Registration = () => {
 	return (
 		<>
 			{loading ? (
-				<div className="spinner-container">
+				<div className="loader">
 					<Spin spinning={true} size="large" />
 				</div>
 			) : (

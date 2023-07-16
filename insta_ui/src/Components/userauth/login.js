@@ -75,8 +75,8 @@ const Login = () => {
 	return (
 		<>
 			{loading ? (
-				<div className="spinner-container">
-					<Spin spinning={true} size="large" />
+				<div className="loader">
+					<Spin size="large" />
 				</div>
 			) : (
 				<>
