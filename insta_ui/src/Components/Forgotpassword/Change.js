@@ -49,7 +49,7 @@ const ChangePasswordForm = () => {
 				} else {
 					setErrorPrompt(data.message);
 				}
-				console.log(data);
+				// console.log(data);
 			})
 			.catch((error) => {
 				setErrorPrompt("An error occurred while changing the password.");

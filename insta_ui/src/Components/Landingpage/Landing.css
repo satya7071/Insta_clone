@@ -1,0 +1,108 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f7edd5;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  max-width: 600px;
+  padding: 60px;
+  background-color: #292840;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: fade-in 1s ease-in-out;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.welcome {
+  font-size: 2rem;
+  color: #fca311;
+  font-weight: 700;
+}
+
+.insta {
+  font-size: 4rem;
+  color: #56cfe1;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #f5f5f5;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  margin: 0 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-signin {
+  background-color: #56cfe1;
+  color: #292840;
+}
+
+.btn-signup {
+  background-color: #fca311;
+  color: #292840;
+}
+
+.btn:hover {
+  background-color: #292840;
+  color: #56cfe1;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 40px;
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .welcome {
+    font-size: 1.5rem;
+  }
+
+  .insta {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

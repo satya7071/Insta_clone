@@ -28,7 +28,7 @@ const Registration = () => {
 
 			})
 			.catch((error) => {
-				console.error("Fetching user data error:", error);
+				//console.error("Fetching user data error:", error);
 			});
 	}, [apiurl]);
 
@@ -73,7 +73,7 @@ const Registration = () => {
 					navigate("/login");
 				})
 				.catch((error) => {
-					console.error("Registration error:", error);
+					//console.error("Registration error:", error);
 				});
 		} else {
 			setLoading(false);

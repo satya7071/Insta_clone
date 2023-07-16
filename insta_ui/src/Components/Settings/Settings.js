@@ -41,10 +41,10 @@ const ProfileForm = () => {
 					setProfile(null);
 				}
 			} else {
-				console.error("Error fetching profile data:", response.status);
+				//console.error("Error fetching profile data:", response.status);
 			}
 		} catch (error) {
-			console.error("Error fetching profile data:", error);
+			//console.error("Error fetching profile data:", error);
 		}
 	};
 
@@ -72,12 +72,12 @@ const ProfileForm = () => {
 			});
 			if (response.ok) {
 				message.success("Profile updated successfully!");
-				fetchProfileData();
+				window.location.reload();
 			} else {
 				message.error("Failed to update profile. Please try again.");
 			}
 		} catch (error) {
-			console.error("Error updating profile:", error);
+			//console.error("Error updating profile:", error);
 			message.error("Failed to update profile. Please try again.");
 		}
 
@@ -92,8 +92,8 @@ const ProfileForm = () => {
 	
 
 	return (
-		<Layout>
-			<Content className="main">
+		<>
+			<Content className="upload-main">
 				<div className="profilecont">
 					<Form
                         style={{width:'100%'}}
@@ -123,7 +123,7 @@ const ProfileForm = () => {
 					</Form>
 				</div>
 			</Content>
-		</Layout>
+		</>
 	);
 };
 

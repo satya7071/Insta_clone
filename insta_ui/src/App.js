@@ -6,16 +6,18 @@ import ResetPasswordForm from "./Components/Forgotpassword/Reset";
 import Login from "./Components/userauth/login";
 import Home from "./Components/Home/Home";
 import HeaderComponent from "./Components/Header/Header";
-import SideNav from "./Components/sidenav/sidenav";
-import PostForm from "./Components/Upload/Upload";
 import ProfileForm from "./Components/Settings/Settings";
 import Profile from "./Components/Profile/Profile";
 import Registration from "./Components/userauth/signup.js";
+import Landing from "./Components/Landingpage/Landing";
+
 function App() {
 	return (
 		<UserProvider>
 			<Router>
 				<Routes className="dd">
+
+					<Route path="" element={<Landing />} />
 					<Route path="/forgot" element={<ForgotPassword />} />
 					<Route path="/reset/:uidb64/:token" element={<ResetPasswordForm />} />
 					<Route path="/login" element={<Login />} />
@@ -25,27 +27,18 @@ function App() {
 						element={
 							<>
 								<HeaderComponent />
-								<SideNav />
+								
 								<Home />
 							</>
 						}
 					/>
-					<Route
-						path="/upload"
-						element={
-							<>
-								<HeaderComponent />
-								<SideNav />
-								<PostForm />
-							</>
-						}
-					/>
+					
 					<Route
 						path="/settings"
 						element={
 							<>
 								<HeaderComponent />
-								<SideNav />
+								
 								<ProfileForm />
 							</>
 						}
@@ -53,7 +46,7 @@ function App() {
 					<Route
 									path="/profile/:username"
 									element={<>
-								<HeaderComponent /><Profile username={2} /><SideNav /></>} />
+								<HeaderComponent /><Profile username={2} /></>} />
 					
 				</Routes>
 			</Router>

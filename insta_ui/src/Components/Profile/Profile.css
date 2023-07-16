@@ -4,6 +4,7 @@
 .innerpost{
     width: 300px;
     height: 300px;
+    margin: 1.5%;
 }
 .innercont{
     width: 100%;
@@ -30,7 +31,7 @@
 }
 
 .innerpost {
-  margin-right: 10px; 
+  margin-right: 0px; 
   flex: 0 0 calc(23.33%);
 }
 .pf{
@@ -52,14 +53,14 @@
 
 @media (max-width: 768px) {
   .innerpost {
-    flex: 0 0 calc(50% - 10px); /* Adjust the width of each card for smaller screens */
+    flex: 0 0 calc(50% - 10px);
   }
 }
 
 @media (max-width: 480px) {
   .innerpost {
-    flex: 0 0 100%; /* Make each card occupy the full width on smaller screens */
-    margin-right: 0; /* Remove the margin between cards */
+    flex: 0 0 100%; 
+    margin-right: 0;
   }
   .pfdes{
     margin-left: 10px;

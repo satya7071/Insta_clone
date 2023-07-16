@@ -21,7 +21,7 @@ function ForgotPassword() {
 	const handleForgotPassword = async (values) => {
 		setLoading(true)
 		
-		console.log(JSON.stringify(values))
+		// console.log(JSON.stringify(values))
 		try {
 			const response = await fetch(`${apiurl}/forgotpassword/`, {
 				method: "POST",
@@ -32,7 +32,7 @@ function ForgotPassword() {
 			});
 
 			const data = await response.json();
-			console.log(data)
+			// console.log(data)
 			if (response.ok) {
 				setLoading(false);
 				setSuccessMessage(data.success);

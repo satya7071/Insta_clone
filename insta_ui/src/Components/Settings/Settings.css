@@ -11,17 +11,10 @@
     background-color: white;
     border-radius: 20px;
     padding: 20px;
-    width: 500px;
-    height: max-content;
+    width: 80%;
+    height: 70%;
 }
 
 .grey-bg{
     background-color: lightgray;
-}
-
-@media (max-width: 576px){
-    .profilecont{
-        left: 60%;
-        width: 300px;
-    }
 }

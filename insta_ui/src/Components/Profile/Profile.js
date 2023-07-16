@@ -1,18 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../UserContext";
-import { Card, Layout ,Avatar,Result,Button,Modal,List } from "antd";
+import { Card, Layout, Avatar, Result, Button, Modal, List, Spin } from "antd";
 import { Image } from "antd";
 import { Link } from "react-router-dom";
 import "./Profile.css";
 import { useParams } from "react-router-dom";
 import FollowButton from "./Followbtn";
 import NotLoggedin from "../Notloggedin";
-
+import ProfileForm from "../Settings/Settings";
+import { EditOutlined } from "@ant-design/icons";
 
 const { Content } = Layout;
 
 const Profile = () => {
-	const { user,apiurl,token } = useContext(UserContext);
+	const { user, apiurl, token } = useContext(UserContext);
 	const { username } = useParams();
 	const [userId, setUserId] = useState(null);
 	const [profile, setProfile] = useState(null);
@@ -25,6 +26,16 @@ const Profile = () => {
 	const [selectedTab, setSelectedTab] = useState("followers");
 	const [isCurrentUser, setIsCurrentUser] = useState(false);
 	const [isFollowing, setIsFollowing] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
+	const [modalVisible2, setModalVisible2] = useState(false);
+
+	const handleEditProfile = () => {
+		setModalVisible2(true);
+	};
+
+	const handleModalClose = () => {
+		setModalVisible2(false);
+	};
 
 	useEffect(() => {
 		fetchUserId();
@@ -55,7 +66,7 @@ const Profile = () => {
 			setFollowersList(filteredFollowers);
 			setFollowingsList(filteredFollowings);
 		} catch (error) {
-			console.error("Error fetching follow data:", error);
+			//console.error("Error fetching follow data:", error);
 		}
 	};
 
@@ -65,41 +76,42 @@ const Profile = () => {
 			if (response.ok) {
 				const data = await response.json();
 				const filtereduser = data.find((item) => item.username === username);
-				// console.log(filtereduser);
 				if (filtereduser) {
 					setUserId(filtereduser.id);
 				} else {
 					setProfile(null);
 				}
 			} else {
-				console.error("Error fetching profile data:", response.status);
+				//console.error("Error fetching profile data:", response.status);
 			}
 		} catch (error) {
-			console.error("Error fetching profile data:", error);
+			//console.error("Error fetching profile data:", error);
 		}
 	};
 
 	const fetchProfileData = async () => {
+		setIsLoading(true);
 		try {
 			const response = await fetch(`${apiurl}/api/profile/`);
 			if (response.ok) {
 				const data = await response.json();
 				const filteredProfile = data.find((item) => item.user === userId);
-				// console.log(filteredProfile);
 				if (filteredProfile) {
 					setProfile(filteredProfile);
 				} else {
 					setProfile(null);
 				}
 			} else {
-				console.error("Error fetching profile data:", response.status);
+				//console.error("Error fetching profile data:", response.status);
 			}
 		} catch (error) {
-			console.error("Error fetching profile data:", error);
+			//console.error("Error fetching profile data:", error);
 		}
+		setIsLoading(false);
 	};
 
 	async function fetchPosts() {
+		
 		try {
 			const postsResponse = await fetch(`${apiurl}/api/post/`);
 			const postsData = await postsResponse.json();
@@ -112,8 +124,9 @@ const Profile = () => {
 
 			setPosts(filteredPosts);
 		} catch (error) {
-			console.error("Error fetching leave options:", error);
+			//console.error("Error fetching posts:", error);
 		}
+		
 	}
 
 	useEffect(() => {
@@ -129,11 +142,6 @@ const Profile = () => {
 		setIsFollowing(isFollowingUser);
 	}, [username, followersList]);
 
-	
-	
-
-	
-
 	const handleModalToggle = () => {
 		setModalVisible(!modalVisible);
 	};
@@ -141,7 +149,7 @@ const Profile = () => {
 	const handleTabChange = (tab) => {
 		setSelectedTab(tab);
 	};
-	
+
 	const handleFollow = async () => {
 		try {
 			const response = await fetch(`${apiurl}/api/follow/`, {
@@ -159,35 +167,27 @@ const Profile = () => {
 				setIsFollowing(true);
 				setFollowerCount(followerCount + 1);
 			} else {
-				console.error("Error following the user");
+				//console.error("Error following the user");
 			}
 		} catch (error) {
-			console.error("Error following the user:", error);
+			//console.error("Error following the user:", error);
 		}
 	};
-	
 
 	const handleUnfollow = async () => {
 		try {
-
-			// console.log(followingsList)
-			
 			const relationship = followersList.find(
 				(item) => item.follower === user && item.user === username
 			);
-			// console.log(relationship)
 
 			if (!relationship) {
-				console.error("Relationship not found. Unable to unfollow.");
+				//console.error("Relationship not found. Unable to unfollow.");
 				return;
 			}
 
-			const response = await fetch(
-				`${apiurl}/api/follow/${relationship.id}/`,
-				{
-					method: "DELETE",
-				}
-			);
+			const response = await fetch(`${apiurl}/api/follow/${relationship.id}/`, {
+				method: "DELETE",
+			});
 
 			if (response.ok) {
 				setIsFollowing(false);
@@ -196,20 +196,26 @@ const Profile = () => {
 					followersList.filter((item) => item.id !== relationship.id)
 				);
 			} else {
-				console.error("Error unfollowing the user");
+				//console.error("Error unfollowing the user");
 			}
 		} catch (error) {
-			console.error("Error unfollowing the user:", error);
+			//console.error("Error unfollowing the user:", error);
 		}
 	};
 
 	if (!token && !user) {
 		return <NotLoggedin />;
 	}
-	
+
+	if (isLoading) {
+		return (
+			<div className="loader">
+				<Spin size="large" />
+			</div>
+		);
+	}
 
 	if (!profile) {
-		
 		return (
 			<Result
 				status="404"
@@ -221,15 +227,9 @@ const Profile = () => {
 					</Button>
 				}
 			/>
-		)
+		);
 	}
 
-	
-
-
-		
-	
-	
 	return (
 		<Layout>
 			<Content className="main">
@@ -243,6 +243,16 @@ const Profile = () => {
 								/>
 								<div className="pfdes">
 									<div className="username">{username}</div>
+									<Button type="text" onClick={handleEditProfile}>
+										<EditOutlined />
+									</Button>
+									<Modal
+										title="Edit Profile"
+										open={modalVisible2}
+										onCancel={handleModalClose}
+										footer={""}>
+										<ProfileForm />
+									</Modal>
 									<div
 										className="bio"
 										dangerouslySetInnerHTML={{
@@ -271,7 +281,7 @@ const Profile = () => {
 										<Card
 											className="innerpost"
 											key={post.id}
-											cover={<img src={post.image} alt="Cover" />}
+											cover={<Image src={post.image} alt="" />}
 										/>
 									))}
 							</div>

@@ -9,15 +9,27 @@
 	color: white;
 }
 
-*{
-	font-family: cursive;
-}
 
 .title{
-    margin-left: 20px ;
+	position: absolute;
+	top: 50%;
+	left: 2%;
+	transform: translateY(-50%);
 	color: white;
     font-size:25px;
 	font-weight: 500;
+}
+
+.items{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	position: absolute;
+	right: 2%;
+}
+
+.title a{
+	color: white;
 }
 
 @media (max-width: 576px){

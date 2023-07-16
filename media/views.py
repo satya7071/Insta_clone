@@ -75,18 +75,18 @@ class UserAuthenticateView(APIView):
         password = request.data.get('password')
         user = authenticate(username=username, password=password)
         if user:
-            login(request, user)
+            # login(request, user)
             response_data = {
                 'token': str(user.auth_token),
                 'name': str(username),
                 'id' : user.id
             }
-            subject = 'User Logged In'
-            message = f"Congratulations you were logged in..!"
-            sender_email = 'mareedu.satyanarayana.5475@gmail.com'
-            recipient_email = user.email
-            send_mail(subject, message, sender_email, [
-                recipient_email], fail_silently=False)
+            # subject = 'User Logged In'
+            # message = f"Congratulations you were logged in..!"
+            # sender_email = 'mareedu.satyanarayana.5475@gmail.com'
+            # recipient_email = user.email
+            # send_mail(subject, message, sender_email, [
+            #     recipient_email], fail_silently=False)
             return Response(response_data, status=status.HTTP_200_OK)
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 

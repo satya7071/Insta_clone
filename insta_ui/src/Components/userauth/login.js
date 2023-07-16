@@ -145,6 +145,13 @@ const Login = () => {
 												Remember Me
 											</Checkbox>
 										</Form.Item>
+										<div className="adjust">
+											<label htmlFor="Login">Don't have an account?</label>
+											<Link id="signup" to="/signup" className="a">
+												Create One
+											</Link>
+										</div>
+										<br></br>
 										<Form.Item className="sub-btn">
 											<Button type="primary" htmlType="submit">
 												Submit

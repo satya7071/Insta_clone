@@ -9,8 +9,9 @@ export const UserProvider = ({ children }) => {
 	const [token,setToken] = useState(null);
 	
 
-	// const apiurl = "http://localhost:8000";
-	const apiurl = "https://satyanarayana.pythonanywhere.com";
+	
+	const apiurl = process.env.REACT_APP_API_URL;
+
 
 	
 

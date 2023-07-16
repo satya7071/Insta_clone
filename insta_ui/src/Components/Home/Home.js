@@ -1,20 +1,18 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import { Card } from "antd";
-import { Image } from "antd";
+import { Image, Spin } from "antd";
 import "./Home.css";
 import { Layout, Button } from "antd";
-import {
-	HeartFilled,
-	HeartTwoTone,
-} from "@ant-design/icons";
+import { HeartFilled, HeartTwoTone } from "@ant-design/icons";
 import NotLoggedin from "../Notloggedin";
 
 const { Content } = Layout;
 
 const Home = () => {
-	const { user, apiurl ,userId,token } = useContext(UserContext);
+	const { user, apiurl, userId, token } = useContext(UserContext);
 	const [posts, setPosts] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		fetchPosts();
@@ -41,16 +39,15 @@ const Home = () => {
 			);
 
 			setPosts(filteredPosts);
+			setIsLoading(false);
 		} catch (error) {
-			console.error("Error fetching leave options:", error);
+			// console.error("Error fetching leave options:", error);
 		}
 	}
 
 	const calculateRelativeTime = (createdAt) => {
 		const now = new Date();
-		// console.log(now)
 		const created = new Date(createdAt);
-		// console.log(created)
 		const diff = now - created;
 
 		const seconds = Math.floor(diff / 1000);
@@ -76,7 +73,6 @@ const Home = () => {
 	};
 
 	async function likePost(id) {
-		// console.log(id);
 		const values = {
 			id: id,
 			user: user,
@@ -94,7 +90,6 @@ const Home = () => {
 	}
 
 	async function unlikePost(id) {
-		// console.log(id);
 		const values = {
 			id: id,
 			user: user,
@@ -111,19 +106,24 @@ const Home = () => {
 		}
 	}
 
-	// console.log(userId)
-
-	if(!token && !user){
-		return(
-			<NotLoggedin />
-		)
+	if (!token && !user) {
+		return <NotLoggedin />;
 	}
+
+		if (isLoading) {
+			return (
+				<div className="loader">
+					<Spin size="large" />
+				</div>
+			);
+		}
 
 	return (
 		<Layout>
 			<Content className="main">
 				<div className="postscontainer">
-					{posts &&
+					{(
+						posts &&
 						posts.map((post) => (
 							<Card
 								className="postcard"
@@ -141,13 +141,19 @@ const Home = () => {
 									</div>
 								}
 								key={post.id}
-								style={{ margin: "16px 0", width: "100%", maxWidth: "400px" }}>
+								style={{
+									margin: "16px 0",
+									width: "100%",
+									maxWidth: "400px",
+								}}>
 								<div>
 									<Image className="post-image" alt="post" src={post.image} />
 								</div>
 								<div className="desc">
 									<div>
-										<div className="m-1"><b>{post.user}</b>: {post.caption}</div>
+										<div className="m-1">
+											<b>{post.user}</b>: {post.caption}
+										</div>
 										<div className="grey-text">Likes: {post.no_of_likes}</div>
 									</div>
 									<div className="likebutton">
@@ -170,7 +176,8 @@ const Home = () => {
 									</div>
 								</div>
 							</Card>
-						))}
+						))
+					)}
 				</div>
 			</Content>
 		</Layout>

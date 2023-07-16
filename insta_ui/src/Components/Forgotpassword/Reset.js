@@ -57,7 +57,7 @@ const ResetPasswordForm = () => {
 			
 		} catch (error) {
 			
-			console.error("Error:", error);
+			// console.error("Error:", error);
 			setError("An error occurred while resetting the password");
 		}
 	};

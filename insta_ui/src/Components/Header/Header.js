@@ -1,31 +1,30 @@
-import { Layout,Input,Button,Result } from "antd";
+import { Layout, Input, Button, Modal, Menu, Dropdown } from "antd";
 import {
 	SearchOutlined,
-	LogoutOutlined,
 	CloseOutlined,
+	UploadOutlined,
+	SettingOutlined,
 } from "@ant-design/icons";
 import "./Header.css";
 import { UserContext } from "../UserContext";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import PostForm from "../Upload/Upload";
 import { Link } from "react-router-dom";
 const { Header } = Layout;
+
 const HeaderComponent = () => {
 	const { handleLogout } = useContext(UserContext);
 	const navigate = useNavigate();
-	const { user , apiurl ,token } = useContext(UserContext);
+	const { user, apiurl, token } = useContext(UserContext);
 	const [searchValue, setSearchValue] = useState("");
 	const [expanded, setExpanded] = useState(false);
-	
+	const [uploadModalVisible, setUploadModalVisible] = useState(false);
+
 	const Logout = () => {
 		handleLogout();
 		navigate("/login");
 	};
-
-	console.log(token);
-
-	
 
 	const handleSearch = () => {
 		navigate(`/profile/${searchValue}`);
@@ -39,13 +38,31 @@ const HeaderComponent = () => {
 		setExpanded(!expanded);
 	};
 
+	const showUploadModal = () => {
+		setUploadModalVisible(true);
+	};
+
+	const hideUploadModal = () => {
+		setUploadModalVisible(false);
+	};
+
 	if (token === null) {
-		return
+		return null;
 	}
+
+	const menu = (
+		<Menu>
+			<Menu.Item>
+				<Link to={`/profile/${user}`}>Profile</Link>
+			</Menu.Item>
+			<Menu.Item onClick={Logout}>Logout</Menu.Item>
+		</Menu>
+	);
+
 	return (
 		<Header className="Head">
-			<div className="title">InstaDoppelganger</div>
-			<div style={{ display: "flex", alignItems: "center" }}>
+			<div className="title"><Link to="/home">InstaDoppelganger</Link></div>
+			<div className="items">
 				{expanded ? (
 					<>
 						<Input
@@ -79,12 +96,30 @@ const HeaderComponent = () => {
 				)}
 
 				<Button
-					onClick={Logout}
+					onClick={showUploadModal}
 					type="text"
-					style={{ fontSize: "18px", marginRight: "30px", color: "white" }}>
-					<LogoutOutlined />
+					style={{ fontSize: "18px", color: "white" }}>
+					<UploadOutlined />
 				</Button>
+
+				<Dropdown overlay={menu} trigger={["click"]}>
+					<Button
+						type="text"
+						style={{ fontSize: "18px", color: "white" }}>
+						<SettingOutlined />
+					</Button>
+				</Dropdown>
 			</div>
+
+			
+			<Modal
+				title="Upload Image"
+				open={uploadModalVisible}
+				onOk={hideUploadModal}
+				onCancel={hideUploadModal}
+				footer={""}>
+				<PostForm />
+			</Modal>
 		</Header>
 	);
 };

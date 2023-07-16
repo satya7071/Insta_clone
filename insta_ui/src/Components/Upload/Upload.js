@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Upload, Button, Input, Modal, Layout } from "antd";
+import { Upload, Button, Input, message, Layout } from "antd";
 import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
@@ -14,7 +14,7 @@ const PostForm = () => {
 	const [image, setImage] = useState(null);
 	const [caption, setCaption] = useState("");
 	const [previewImage, setPreviewImage] = useState(null);
-	const [uploadSuccess, setUploadSuccess] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const username = user;
 
 	const handleImageUpload = (file) => {
@@ -27,8 +27,8 @@ const PostForm = () => {
 	};
 
 	const handleSubmit = () => {
+		setLoading(true);
 		if (!image) {
-			// Display an error message or take appropriate action when no image is selected.
 			return;
 		}
 
@@ -43,26 +43,25 @@ const PostForm = () => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				setUploadSuccess(true);
+				message.success("Uploaded successfully!");
+				setLoading(false);
+				window.location.reload();
 			})
 			.catch((error) => {
-				console.error(error);
+				//console.error(error);
 			});
+			
 	};
 
-	const handleModalClose = () => {
-		setUploadSuccess(false);
-		setImage(null);
-		setCaption("");
-	};
+	
 
 	if (!token && !user) {
 		return <NotLoggedin />;
 	}
 
 	return (
-		<Layout>
-			<div className="main">
+		<>
+			<div className="upload-main">
 				<div className="uploadcont">
 					<ImgCrop aspect={1}>
 						<Upload
@@ -83,22 +82,18 @@ const PostForm = () => {
 						onChange={handleCaptionChange}
 						style={{ marginTop: 16 }}
 					/>
-					<Button
-						type="primary"
-						onClick={handleSubmit}
-						style={{ marginTop: 16 }}>
-						Submit
-					</Button>
-					<Modal
-						open={uploadSuccess}
-						title="Upload Success"
-						onCancel={handleModalClose}
-						onOk={handleModalClose}>
-						<p>Your photo has been uploaded successfully!</p>
-					</Modal>
+					<span>
+						<Button
+							type="primary"
+							onClick={handleSubmit}
+							style={{ marginTop: 16 }}
+							loading={loading}>
+							Submit
+						</Button>
+					</span>
 				</div>
 			</div>
-		</Layout>
+		</>
 	);
 };
 
