@@ -19,7 +19,9 @@ const Home = () => {
 	const [likedByUsernames, setLikedByUsernames] = useState([]); // Store fetched usernames
 
 	const handleModalToggle = () => {
+		setSelectedPost(null);
 		setModalVisible(!modalVisible);
+		
 	};
 
 	useEffect(() => {

@@ -33,6 +33,7 @@ const Profile = () => {
 		setModalVisible2(true);
 	};
 
+
 	const handleModalClose = () => {
 		setModalVisible2(false);
 	};
@@ -233,7 +234,7 @@ const Profile = () => {
 		<Layout>
 			<Content className="main">
 				<div className="innercont">
-					<div>
+					<div >
 						{profile && (
 							<div className="pf">
 								<Avatar
@@ -241,22 +242,25 @@ const Profile = () => {
 									src={<Image src={profile.profileimg} alt="avatar" />}
 								/>
 								<div className="pfdes">
-									<div className="username">{username}</div>
-									<Button type="text" onClick={handleEditProfile}>
-										<EditOutlined />
-									</Button>
+									<div className="username">
+										{username}
+										
+											<Button
+												type="link"
+												className="edit-btn"
+												onClick={handleEditProfile}>
+												<EditOutlined />
+												Edit Profile
+											</Button>
+										
+									</div>
 									<Modal
 										title="Edit Profile"
-										visible={modalVisible2}
+										open={modalVisible2}
 										onCancel={handleModalClose}
 										footer={null}>
 										<ProfileForm />
 									</Modal>
-									<div
-										className="bio"
-										dangerouslySetInnerHTML={{
-											__html: profile.bio.replace(/\n/g, "<br/>"),
-										}}></div>
 
 									<Button type="link" onClick={handleModalToggle}>
 										{`${followerCount} Followers | ${followingCount} Following`}
@@ -268,6 +272,11 @@ const Profile = () => {
 											onUnfollow={handleUnfollow}
 										/>
 									)}
+									<div
+										className="bio"
+										dangerouslySetInnerHTML={{
+											__html: profile.bio.replace(/\n/g, "<br/>"),
+										}}></div>
 								</div>
 							</div>
 						)}
@@ -310,7 +319,12 @@ const Profile = () => {
 						}
 						renderItem={(item) => (
 							<List.Item key={item.id}>
-								{selectedTab === "followers" ? item.follower : item.user}
+								<a
+									href={`/profile/${
+										selectedTab === "followers" ? item.follower : item.user
+									}`}>
+									{selectedTab === "followers" ? item.follower : item.user}
+								</a>
 							</List.Item>
 						)}
 					/>
