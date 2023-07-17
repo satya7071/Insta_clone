@@ -9,6 +9,20 @@
 	color: white;
 }
 
+.input-container{
+	    position: absolute;
+		left: -200%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: flex-end;
+		height: 100%;
+		flex-wrap: nowrap;
+}
+
+
+
+
 
 .title{
 	position: absolute;
@@ -36,9 +50,9 @@
     .title{
         font-size: 15px;
     }
-	.input-search{
-		margin-top: 110px;
-		margin-right: -30px;
+	.input-container{
+		margin-top: 35%;
+		margin-left: 35%;
 	}
 	
 }

@@ -28,7 +28,9 @@ const HeaderComponent = () => {
 
 	const handleSearch = () => {
 		navigate(`/profile/${searchValue}`);
+		window.location.reload();
 	};
+
 
 	const handleInputChange = (e) => {
 		setSearchValue(e.target.value);
@@ -61,21 +63,25 @@ const HeaderComponent = () => {
 
 	return (
 		<Header className="Head">
-			<div className="title"><Link to="/home">InstaDoppelganger</Link></div>
+			<div className="title">
+				<Link to="/home">InstaDoppelganger</Link>
+			</div>
 			<div className="items">
 				{expanded ? (
 					<>
-						<Input
-							value={searchValue}
-							onChange={handleInputChange}
-							className="input-search grey-bg"
-						/>
-						<Button
-							type="primary"
-							className="input-search"
-							onClick={handleSearch}>
-							<SearchOutlined />
-						</Button>
+						<div className="input-container">
+							<Input
+								value={searchValue}
+								onChange={handleInputChange}
+								className="input-search grey-bg"
+							/>
+							<Button
+								type="primary"
+								className="button-search"
+								onClick={handleSearch}
+								icon={<SearchOutlined />}
+							/>
+						</div>
 						<CloseOutlined
 							style={{ fontSize: "18px", color: "white" }}
 							className="close-icon"
@@ -103,15 +109,12 @@ const HeaderComponent = () => {
 				</Button>
 
 				<Dropdown overlay={menu} trigger={["click"]}>
-					<Button
-						type="text"
-						style={{ fontSize: "18px", color: "white" }}>
+					<Button type="text" style={{ fontSize: "18px", color: "white" }}>
 						<SettingOutlined />
 					</Button>
 				</Dropdown>
 			</div>
 
-			
 			<Modal
 				title="Upload Image"
 				open={uploadModalVisible}

@@ -3,9 +3,10 @@ import { UserContext } from "../UserContext";
 import { Card } from "antd";
 import { Image, Spin } from "antd";
 import "./Home.css";
-import { Layout, Button } from "antd";
+import { Layout, Button, Modal } from "antd";
 import { HeartFilled, HeartTwoTone } from "@ant-design/icons";
 import NotLoggedin from "../Notloggedin";
+import { Link } from "react-router-dom";
 
 const { Content } = Layout;
 
@@ -13,6 +14,13 @@ const Home = () => {
 	const { user, apiurl, userId, token } = useContext(UserContext);
 	const [posts, setPosts] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
+	const [selectedPost, setSelectedPost] = useState(null); // Track the selected post
+	const [modalVisible, setModalVisible] = useState(false);
+	const [likedByUsernames, setLikedByUsernames] = useState([]); // Store fetched usernames
+
+	const handleModalToggle = () => {
+		setModalVisible(!modalVisible);
+	};
 
 	useEffect(() => {
 		fetchPosts();
@@ -105,25 +113,67 @@ const Home = () => {
 			fetchPosts();
 		}
 	}
+	useEffect(() => {
+		if (modalVisible && selectedPost !== null) {
+			const likedByUserIds = posts
+				.find((post) => post.id === selectedPost)
+				.liked_by.map((item) => item);
+
+			fetchUserNames(likedByUserIds).then((userNames) => {
+				setLikedByUsernames(userNames);
+			});
+		}
+	}, [modalVisible, selectedPost, posts]);
 
 	if (!token && !user) {
 		return <NotLoggedin />;
 	}
 
-		if (isLoading) {
-			return (
-				<div className="loader">
-					<Spin size="large" />
-				</div>
-			);
+	const fetchUserName = async (id) => {
+		try {
+			const response = await fetch(`${apiurl}/api/users/${id}/`);
+			if (response.ok) {
+				const data = await response.json();
+				console.log(data);
+				return data.username;
+			} else {
+				// console.error("Error fetching profile data:", response.status);
+				return null;
+			}
+		} catch (error) {
+			// console.error("Error fetching profile data:", error);
+			return null;
 		}
+	};
+
+	async function fetchUserNames(userIds) {
+		try {
+			const userNames = await Promise.all(
+				userIds.map((id) => fetchUserName(id))
+			);
+			return userNames;
+		} catch (error) {
+			// Handle error if necessary
+			console.error("Error fetching user names:", error);
+			return [];
+		}
+	}
+
+	
+
+	if (isLoading) {
+		return (
+			<div className="loader">
+				<Spin size="large" />
+			</div>
+		);
+	}
 
 	return (
 		<Layout>
 			<Content className="main">
 				<div className="postscontainer">
-					{(
-						posts &&
+					{posts &&
 						posts.map((post) => (
 							<Card
 								className="postcard"
@@ -134,7 +184,9 @@ const Home = () => {
 											justifyContent: "space-between",
 											alignItems: "center",
 										}}>
-										<span>{post.user}</span>
+										<span>
+											<Link to={`/profile/${post.user}`}>{post.user}</Link>
+										</span>
 										<span style={{ color: "gray", fontSize: "13px" }}>
 											{calculateRelativeTime(post.created_at)}
 										</span>
@@ -154,7 +206,27 @@ const Home = () => {
 										<div className="m-1">
 											<b>{post.user}</b>: {post.caption}
 										</div>
-										<div className="grey-text">Likes: {post.no_of_likes}</div>
+										<div className="grey-text">
+											<Button
+												type="text"
+												onClick={() => {
+													setSelectedPost(post.id); // Set the selected post
+													handleModalToggle();
+												}}
+												style={{padding:0}}>
+												<b>Likes:</b>
+											</Button>
+											{post.no_of_likes}
+										</div>
+										<Modal
+											open={modalVisible && selectedPost === post.id} // Show the modal only for the selected post
+											onCancel={handleModalToggle}
+											footer={""}>
+											<h3>Liked By:</h3>
+											{likedByUsernames.map((item) => (
+												<div key={item}>{item}</div>
+											))}
+										</Modal>
 									</div>
 									<div className="likebutton">
 										{post.liked_by.includes(parseInt(userId)) ? (
@@ -176,8 +248,7 @@ const Home = () => {
 									</div>
 								</div>
 							</Card>
-						))
-					)}
+						))}
 				</div>
 			</Content>
 		</Layout>

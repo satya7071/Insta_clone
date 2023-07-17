@@ -66,7 +66,7 @@ const Profile = () => {
 			setFollowersList(filteredFollowers);
 			setFollowingsList(filteredFollowings);
 		} catch (error) {
-			//console.error("Error fetching follow data:", error);
+			// console.error("Error fetching follow data:", error);
 		}
 	};
 
@@ -80,12 +80,13 @@ const Profile = () => {
 					setUserId(filtereduser.id);
 				} else {
 					setProfile(null);
+					setIsLoading(false);
 				}
 			} else {
-				//console.error("Error fetching profile data:", response.status);
+				// console.error("Error fetching profile data:", response.status);
 			}
 		} catch (error) {
-			//console.error("Error fetching profile data:", error);
+			// console.error("Error fetching profile data:", error);
 		}
 	};
 
@@ -102,16 +103,15 @@ const Profile = () => {
 					setProfile(null);
 				}
 			} else {
-				//console.error("Error fetching profile data:", response.status);
+				// console.error("Error fetching profile data:", response.status);
 			}
 		} catch (error) {
-			//console.error("Error fetching profile data:", error);
+			// console.error("Error fetching profile data:", error);
 		}
 		setIsLoading(false);
 	};
 
 	async function fetchPosts() {
-		
 		try {
 			const postsResponse = await fetch(`${apiurl}/api/post/`);
 			const postsData = await postsResponse.json();
@@ -124,9 +124,8 @@ const Profile = () => {
 
 			setPosts(filteredPosts);
 		} catch (error) {
-			//console.error("Error fetching posts:", error);
+			// console.error("Error fetching posts:", error);
 		}
-		
 	}
 
 	useEffect(() => {
@@ -167,10 +166,10 @@ const Profile = () => {
 				setIsFollowing(true);
 				setFollowerCount(followerCount + 1);
 			} else {
-				//console.error("Error following the user");
+				// console.error("Error following the user");
 			}
 		} catch (error) {
-			//console.error("Error following the user:", error);
+			// console.error("Error following the user:", error);
 		}
 	};
 
@@ -181,7 +180,7 @@ const Profile = () => {
 			);
 
 			if (!relationship) {
-				//console.error("Relationship not found. Unable to unfollow.");
+				// console.error("Relationship not found. Unable to unfollow.");
 				return;
 			}
 
@@ -196,10 +195,10 @@ const Profile = () => {
 					followersList.filter((item) => item.id !== relationship.id)
 				);
 			} else {
-				//console.error("Error unfollowing the user");
+				// console.error("Error unfollowing the user");
 			}
 		} catch (error) {
-			//console.error("Error unfollowing the user:", error);
+			// console.error("Error unfollowing the user:", error);
 		}
 	};
 
@@ -248,9 +247,9 @@ const Profile = () => {
 									</Button>
 									<Modal
 										title="Edit Profile"
-										open={modalVisible2}
+										visible={modalVisible2}
 										onCancel={handleModalClose}
-										footer={""}>
+										footer={null}>
 										<ProfileForm />
 									</Modal>
 									<div
@@ -288,7 +287,10 @@ const Profile = () => {
 						</Card>
 					</div>
 				</div>
-				<Modal open={modalVisible} onCancel={handleModalToggle} footer={null}>
+				<Modal
+					visible={modalVisible}
+					onCancel={handleModalToggle}
+					footer={null}>
 					<div className="tab-buttons">
 						<Button
 							type={selectedTab === "followers" ? "primary" : "default"}
