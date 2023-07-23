@@ -93,6 +93,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_HEADERS = ['*']
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000',
+                         'https://insta-doppelganger.web.app']
+
 LANGUAGE_CODE = 'en-us'
 USE_TZ = True
 TIME_ZONE = 'Asia/Kolkata'
@@ -111,11 +117,7 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': '-T8th24ctpOP4o8hhupB6xRH6QE'
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_HEADERS = ['*']
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000',
-                         'https://insta-doppelganger.web.app']
+
 
 # CORS_TRUSTED_ORIGINS = ['*']
 
