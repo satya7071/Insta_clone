@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'rest_framework.authtoken',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -95,10 +97,19 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
+# MEDIA_URL = '/media_images/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media_images/')
+
 MEDIA_URL = '/media_images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_images/')
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dh6genilo',
+    'API_KEY': '471556392382421',
+    'API_SECRET': '-T8th24ctpOP4o8hhupB6xRH6QE'
+}
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_HEADERS = ['*']

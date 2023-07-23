@@ -171,7 +171,7 @@ const Home = () => {
 		);
 	}
 
-	if (!posts){
+	if (posts === null){
 		return ( <NotFound />)
 	}
 
