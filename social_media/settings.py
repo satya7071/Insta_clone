@@ -31,11 +31,12 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'social_media.urls'
@@ -117,6 +118,8 @@ CORS_ORIGIN_WHITELIST = ['http://localhost:3000',
                          'https://insta-doppelganger.web.app']
 
 # CORS_TRUSTED_ORIGINS = ['*']
+
+
 
 # email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
