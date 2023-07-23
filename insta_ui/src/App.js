@@ -6,17 +6,16 @@ import ResetPasswordForm from "./Components/Forgotpassword/Reset";
 import Login from "./Components/userauth/login";
 import Home from "./Components/Home/Home";
 import HeaderComponent from "./Components/Header/Header";
-import ProfileForm from "./Components/Settings/Settings";
 import Profile from "./Components/Profile/Profile";
 import Registration from "./Components/userauth/signup.js";
 import Landing from "./Components/Landingpage/Landing";
+import ReelViewer from "./Components/Reels/Reelsview";
 
 function App() {
 	return (
 		<UserProvider>
 			<Router>
 				<Routes className="dd">
-
 					<Route path="" element={<Landing />} />
 					<Route path="/forgot" element={<ForgotPassword />} />
 					<Route path="/reset/:uidb64/:token" element={<ResetPasswordForm />} />
@@ -27,27 +26,33 @@ function App() {
 						element={
 							<>
 								<HeaderComponent />
-								
+
 								<Home />
 							</>
 						}
 					/>
-					
+
 					<Route
-						path="/settings"
+						path="/reels"
 						element={
 							<>
 								<HeaderComponent />
-								
-								<ProfileForm />
+
+								<ReelViewer />
 							</>
 						}
 					/>
-					<Route
-									path="/profile/:username"
-									element={<>
-								<HeaderComponent /><Profile username={2} /></>} />
+
 					
+					<Route
+						path="/profile/:username"
+						element={
+							<>
+								<HeaderComponent />
+								<Profile username={2} />
+							</>
+						}
+					/>
 				</Routes>
 			</Router>
 		</UserProvider>

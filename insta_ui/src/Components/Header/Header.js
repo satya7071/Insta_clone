@@ -4,6 +4,7 @@ import {
 	CloseOutlined,
 	UploadOutlined,
 	SettingOutlined,
+	VideoCameraOutlined,
 } from "@ant-design/icons";
 import "./Header.css";
 import { UserContext } from "../UserContext";
@@ -11,6 +12,9 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PostForm from "../Upload/Upload";
 import { Link } from "react-router-dom";
+import ReelForm from "../Reels/Reelsupload";
+
+
 const { Header } = Layout;
 
 const HeaderComponent = () => {
@@ -20,6 +24,7 @@ const HeaderComponent = () => {
 	const [searchValue, setSearchValue] = useState("");
 	const [expanded, setExpanded] = useState(false);
 	const [uploadModalVisible, setUploadModalVisible] = useState(false);
+	const [uploadReelModalVisible, setReelUploadModalVisible] = useState(false);
 
 	const Logout = () => {
 		handleLogout();
@@ -30,6 +35,15 @@ const HeaderComponent = () => {
 		navigate(`/profile/${searchValue}`);
 		window.location.reload();
 	};
+
+	const ProfileNavigation = () => {
+		navigate(`/profile/${user}`);
+		window.location.reload();
+	}
+
+	const navReels = () => {
+		navigate('/reels');
+	}
 
 
 	const handleInputChange = (e) => {
@@ -48,18 +62,35 @@ const HeaderComponent = () => {
 		setUploadModalVisible(false);
 	};
 
+	const showReelUploadModal = () => {
+		setReelUploadModalVisible(true);
+	};
+
+	const hideReelUploadModal = () => {
+		setReelUploadModalVisible(false);
+	};
+
+
+
 	if (token === null) {
 		return null;
 	}
 
 	const menu = (
 		<Menu>
-			<Menu.Item>
-				<Link to={`/profile/${user}`}>Profile</Link>
-			</Menu.Item>
+			<Menu.Item onClick={ProfileNavigation}>Profile</Menu.Item>
 			<Menu.Item onClick={Logout}>Logout</Menu.Item>
 		</Menu>
 	);
+
+	const uploadmenu = (
+		<Menu>
+			<Menu.Item onClick={showUploadModal}>Upload Post</Menu.Item>
+			<Menu.Item onClick={showReelUploadModal}>Upload Reel</Menu.Item>
+		</Menu>
+	);
+
+	
 
 	return (
 		<Header className="Head">
@@ -67,6 +98,13 @@ const HeaderComponent = () => {
 				<Link to="/home">InstaDoppelganger</Link>
 			</div>
 			<div className="items">
+				<Button
+					className="reelbtn"
+					onClick={navReels}
+					type="text"
+					style={{ fontSize: "18px", color: "white", marginRight: "10px" }}>
+					<VideoCameraOutlined />
+				</Button>
 				{expanded ? (
 					<>
 						<div className="input-container">
@@ -101,12 +139,13 @@ const HeaderComponent = () => {
 					/>
 				)}
 
-				<Button
-					onClick={showUploadModal}
-					type="text"
-					style={{ fontSize: "18px", color: "white" }}>
-					<UploadOutlined />
-				</Button>
+				
+
+				<Dropdown overlay={uploadmenu} trigger={["click"]}>
+					<Button type="text" style={{ fontSize: "18px", color: "white" }}>
+						<UploadOutlined />
+					</Button>
+				</Dropdown>
 
 				<Dropdown overlay={menu} trigger={["click"]}>
 					<Button type="text" style={{ fontSize: "18px", color: "white" }}>
@@ -122,6 +161,15 @@ const HeaderComponent = () => {
 				onCancel={hideUploadModal}
 				footer={""}>
 				<PostForm />
+			</Modal>
+
+			<Modal
+				title="Upload Reel"
+				open={uploadReelModalVisible}
+				onOk={hideReelUploadModal}
+				onCancel={hideReelUploadModal}
+				footer={""}>
+				<ReelForm />
 			</Modal>
 		</Header>
 	);

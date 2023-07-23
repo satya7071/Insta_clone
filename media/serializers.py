@@ -26,3 +26,9 @@ class FollowerscountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Followerscount
         fields = '__all__'
+        
+
+class ReelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reel
+        fields = '__all__'

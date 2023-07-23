@@ -53,3 +53,17 @@ class Followerscount(models.Model):
 
     def __str__(self):
         return self.user + "/" + self.follower
+    
+    
+class Reel(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.CharField(max_length=100)
+    video = models.FileField(upload_to='reel_videos')
+    caption = models.TextField(blank=True)
+    created_at = models.DateTimeField(default=datetime.now)
+    no_of_likes = models.IntegerField(default=0)
+    liked_by = models.ManyToManyField(
+        User, related_name='liked_reels', blank=True)
+
+    def __str__(self):
+        return self.user

@@ -7,6 +7,7 @@ router.register(r'profile', views.ProfileViewSet, basename='profile')
 router.register(r'post', views.PostViewSet, basename='post')
 router.register(r'follow', views.FollowerscountViewSet, basename='follow')
 router.register(r'users', views.UserViewSet)
+router.register(r'reels',views.ReelViewSet,basename='reels')
 
 
 urlpatterns = [
@@ -21,6 +22,9 @@ urlpatterns = [
     path('api/like', views.like_post.as_view(), name='like_post'),
     path('api/unlike',
          views.unlike_post.as_view(), name='unlike_post'),
+    path('api/like/reel', views.like_reel.as_view(), name='like'),
+    path('api/unlike/reel',
+         views.unlike_reel.as_view(), name='unlike'),
 #     path('',views.index),
 #     path('signup',views.signup,name='signup'),
 #     path('test/', views.Test.as_view(),

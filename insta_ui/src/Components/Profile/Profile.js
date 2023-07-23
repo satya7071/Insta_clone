@@ -244,7 +244,7 @@ const Profile = () => {
 								<div className="pfdes">
 									<div className="username">
 										{username}
-										
+											{isCurrentUser && (
 											<Button
 												type="link"
 												className="edit-btn"
@@ -252,6 +252,7 @@ const Profile = () => {
 												<EditOutlined />
 												Edit Profile
 											</Button>
+											)}
 										
 									</div>
 									<Modal
@@ -296,6 +297,7 @@ const Profile = () => {
 						</Card>
 					</div>
 				</div>
+				{isCurrentUser && (
 				<Modal
 					visible={modalVisible}
 					onCancel={handleModalToggle}
@@ -329,6 +331,7 @@ const Profile = () => {
 						)}
 					/>
 				</Modal>
+				)}
 			</Content>
 		</Layout>
 	);

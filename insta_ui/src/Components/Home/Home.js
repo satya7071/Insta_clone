@@ -209,15 +209,19 @@ const Home = () => {
 											<b>{post.user}</b>: {post.caption}
 										</div>
 										<div className="grey-text">
-											<Button
-												type="text"
-												onClick={() => {
-													setSelectedPost(post.id); // Set the selected post
-													handleModalToggle();
-												}}
-												style={{padding:0}}>
-												<b>Likes:</b>
-											</Button>
+											{post.user === user ? (
+												<Button
+													type="text"
+													onClick={() => {
+														setSelectedPost(post.id);
+														handleModalToggle();
+													}}
+													style={{ padding: 0 }}>
+													<b>Likes:</b>
+												</Button>
+											) : (
+												<b>Likes: </b>
+											)}
 											{post.no_of_likes}
 										</div>
 										<Modal
