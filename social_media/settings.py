@@ -10,7 +10,7 @@ DEBUG = False
 
 # Add your actual domain(s) for production
 ALLOWED_HOSTS = ['192.168.70.188', 'localhost',
-                 'https://insta-doppelganger.web.app']
+                 'insta-doppelganger.web.app', 'satyanarayana.pythonanywhere.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -36,7 +36,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'social_media.urls'
