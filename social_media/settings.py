@@ -114,7 +114,8 @@ CLOUDINARY_STORAGE = {
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_HEADERS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000',]
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000',
+                         'https://insta-doppelganger.web.app',]
 CORS_TRUSTED_ORIGINS = ['*']
 
 # email
