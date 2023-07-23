@@ -6,11 +6,9 @@ TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 
 SECRET_KEY = 'django-insecure-tlwe(5e8(u9)va4xha6#d+bg@_dz9&o!5!st1k8u1@#93of#ao'
 
-DEBUG = False  
+DEBUG = True
 
-# Add your actual domain(s) for production
-ALLOWED_HOSTS = ['192.168.70.188', 'localhost',
-                 'insta-doppelganger.web.app', 'satyanarayana.pythonanywhere.com']
+ALLOWED_HOSTS = ['192.168.70.188', '*', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,18 +22,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'rest_framework.authtoken',
-    'cloudinary_storage',
-    'cloudinary',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'social_media.urls'
@@ -65,15 +61,14 @@ DATABASES = {
     }
 }
 
-# Example MySQL Configuration (uncomment and fill in correct credentials for production):
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'your_database_name',
-#         'USER': 'your_database_user',
-#         'PASSWORD': 'your_database_password',
-#         'HOST': 'your_database_host',  # e.g., 'localhost' or IP address
-#         'PORT': 'your_database_port',  # e.g., '3306' for MySQL
+#         "NAME": "railway",
+#         "USER": "root",
+#         "PASSWORD": "CzCJgDYrWR2hUHE4X50X",
+#         "HOST": "containers-us-west-138.railway.app",
+#         "PORT": "6618",
 #     }
 # }
 
@@ -92,12 +87,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_HEADERS = ['*']
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000',
-                         'https://insta-doppelganger.web.app']
-
 LANGUAGE_CODE = 'en-us'
 USE_TZ = True
 TIME_ZONE = 'Asia/Kolkata'
@@ -107,20 +96,15 @@ STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 MEDIA_URL = '/media_images/'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_images/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dh6genilo',
-    'API_KEY': '471556392382421',
-    'API_SECRET': '-T8th24ctpOP4o8hhupB6xRH6QE'
-}
 
-
-
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_HEADERS = ['*']
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000',]
 CORS_TRUSTED_ORIGINS = ['*']
-
-
 
 # email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
