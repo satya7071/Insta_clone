@@ -113,7 +113,9 @@ const ReelsComponent = () => {
 				) : (
 					<div className="reels-container" {...swipeHandlers}>
 						{loading ? (
-							<Spin size="large" />
+							<div className="loader">
+								<Spin size="large" />
+							</div>
 						) : (
 							<div className="videocont">
 								<Card

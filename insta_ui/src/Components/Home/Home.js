@@ -7,7 +7,7 @@ import { Layout, Button, Modal } from "antd";
 import { HeartFilled, HeartTwoTone } from "@ant-design/icons";
 import NotLoggedin from "../Notloggedin";
 import { Link } from "react-router-dom";
-
+import NotFound from "../NotFound";
 const { Content } = Layout;
 
 const Home = () => {
@@ -169,6 +169,10 @@ const Home = () => {
 				<Spin size="large" />
 			</div>
 		);
+	}
+
+	if (!posts){
+		return ( <NotFound />)
 	}
 
 	return (
