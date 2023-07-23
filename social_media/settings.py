@@ -6,9 +6,11 @@ TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 
 SECRET_KEY = 'django-insecure-tlwe(5e8(u9)va4xha6#d+bg@_dz9&o!5!st1k8u1@#93of#ao'
 
-DEBUG = True
+DEBUG = False  
 
-ALLOWED_HOSTS = ['192.168.70.188', '*', 'localhost']
+# Add your actual domain(s) for production
+ALLOWED_HOSTS = ['192.168.70.188', 'localhost',
+                 'https://insta-doppelganger.web.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,14 +65,15 @@ DATABASES = {
     }
 }
 
+# Example MySQL Configuration (uncomment and fill in correct credentials for production):
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         "NAME": "railway",
-#         "USER": "root",
-#         "PASSWORD": "CzCJgDYrWR2hUHE4X50X",
-#         "HOST": "containers-us-west-138.railway.app",
-#         "PORT": "6618",
+#         'NAME': 'your_database_name',
+#         'USER': 'your_database_user',
+#         'PASSWORD': 'your_database_password',
+#         'HOST': 'your_database_host',  # e.g., 'localhost' or IP address
+#         'PORT': 'your_database_port',  # e.g., '3306' for MySQL
 #     }
 # }
 
@@ -97,9 +100,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
-# MEDIA_URL = '/media_images/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media_images/')
-
 MEDIA_URL = '/media_images/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
@@ -110,13 +110,13 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': '-T8th24ctpOP4o8hhupB6xRH6QE'
 }
 
-
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_HEADERS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000',
-                         'https://insta-doppelganger.web.app',]
-CORS_TRUSTED_ORIGINS = ['*']
+                         'https://insta-doppelganger.web.app']
+
+# CORS_TRUSTED_ORIGINS = ['*']
 
 # email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
