@@ -52,6 +52,19 @@ TEMPLATES = [
     },
 ]
 
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+  
+    
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
 WSGI_APPLICATION = 'social_media.wsgi.application'
 
 DATABASES = {
@@ -98,7 +111,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 MEDIA_URL = '/media_images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_images/')
 
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_HEADERS = ['*']

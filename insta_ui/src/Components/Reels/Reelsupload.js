@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { Upload, Button, Input, message, Layout } from "antd";
 import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router-dom";
-import ImgCrop from "antd-img-crop";
 import NotLoggedin from "../Notloggedin";
 
 const { TextArea } = Input;
@@ -10,15 +9,15 @@ const { TextArea } = Input;
 const ReelForm = () => {
 	const { user, token, apiurl } = useContext(UserContext);
 	const navigate = useNavigate();
-	const [video, setVideo] = useState(null); // Change 'image' to 'video'
+	const [video, setVideo] = useState(null);
 	const [caption, setCaption] = useState("");
-	const [previewVideo, setPreviewVideo] = useState(null); // Change 'previewImage' to 'previewVideo'
+	const [previewVideo, setPreviewVideo] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const username = user;
 
 	const handleReelUpload = (file) => {
-		setVideo(file); // Change 'setImage' to 'setVideo'
-		setPreviewVideo(URL.createObjectURL(file)); // Change 'setPreviewImage' to 'setPreviewVideo'
+		setVideo(file);
+		setPreviewVideo(URL.createObjectURL(file));
 	};
 
 	const handleCaptionChange = (e) => {
@@ -47,7 +46,6 @@ const ReelForm = () => {
 				window.location.reload();
 			})
 			.catch((error) => {
-				//console.error(error);
 			});
 	};
 
@@ -63,15 +61,15 @@ const ReelForm = () => {
 						<Upload
 							customRequest={({ file }) => handleReelUpload(file)}
 							showUploadList={false}
-							accept="video/*" // Add this to restrict the upload to video files only
+							accept="video/*"
 						>
-							{previewVideo ? ( // Change 'previewImage' to 'previewVideo'
+							{previewVideo ? (
 								<video width="100%" controls>
 									<source src={previewVideo} type="video/mp4" />
 									Your browser does not support the video tag.
 								</video>
 							) : (
-								<Button>Select Video</Button> // Change 'Select Image' to 'Select Video'
+								<Button>Select Video</Button>
 							)}
 						</Upload>
 					
